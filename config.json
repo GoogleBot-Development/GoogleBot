@@ -1,0 +1,13 @@
+{
+  "prefix": [ "g!", "G!" ],
+  "token": "NzIxMjE1OTQ5MDg4MzU4NDIw.Xua5hQ.54ePWr-E3nyZDreI8aYvDmyR2DE",
+  "year": "2020",
+  "version": "2.1",
+  "mainVersion": "2.0",
+  "name": "GoogleBot",
+  "ownerID": "667354950321569792",
+  "ownerUsername": "Jeydin21",
+  "bannedIDs": [ "486689069087064064", "648678633342500874", "549307958798974986" ],
+  "bannedServerIDs": [ "" ],
+  "dblToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyMTIxNTk0OTA4ODM1ODQyMCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTk0NTg4NzMxfQ.viBRX4qYitcESKgg1W_ltNZMis43ZqDBz4YEcb1Ewfg"
+}
