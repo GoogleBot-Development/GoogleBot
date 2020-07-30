@@ -2,9 +2,7 @@ const Discord = require('discord.js')
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
 
 exports.run = (client, message, args) => {
-  message.channel.send("Getting the ping...").then(msg => {
-      msg.delete()
-      var ping = msg.createdTimestamp - message.createdTimestamp + "ms";
+      var ping = Date.now() - message.createdTimestamp + "ms";
 let pingEmbed = new Discord.MessageEmbed()
      .setColor("RANDOM")
      .setTitle("Pong!")
@@ -14,7 +12,6 @@ let pingEmbed = new Discord.MessageEmbed()
      .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
      .setTimestamp()
      message.channel.send(pingEmbed)
-});
 }
 
 exports.help = {
