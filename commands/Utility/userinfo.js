@@ -4,10 +4,10 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 exports.run = (client, message, args) => {
   const dateformat = require('dateformat')
 const status = {
-   online: 'Online', 
-   idle: 'Idle',
-   dnd: 'Do Not Disturb',
-   offline: 'Offline/Invisible'
+   online: '<a:online:738279334367854612> Online', 
+   idle: '<a:idle:738279348179697795> Idle',
+   dnd: '<a:dnd:738279357382131715> Do Not Disturb',
+   offline: '<a:offline:738279367787937835> Offline/Invisible'
  };
 let user = message.mentions.users.first() || message.author
 let member = message.guild.members.cache.get(user.id)
