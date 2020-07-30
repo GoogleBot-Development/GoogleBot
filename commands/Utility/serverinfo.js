@@ -20,6 +20,7 @@ if (roles.length > 30) roles = ["This server has too many roles for me to displa
     .addField("\u200b", "\u200b", true)
     .addField("Member Count", message.guild.memberCount, true)
     .addField("Channel Count", message.guild.channels.cache.size, true)
+    .addField("Role Count", message.guild.roles.cache.size, true)
     .addField("Roles", roles.join(", "))
     .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
     .setTimestamp()
