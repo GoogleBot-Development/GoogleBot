@@ -12,7 +12,7 @@ client.aliases = new Discord.Collection()
 client.on("ready", async () => {
   client.shard.fetchClientValues('guilds.cache.size')
 	.then(results => {
-		let food = (`${results.reduce((prev, guildCount) => prev + guildCount, 10)}`);
+		let food = (`${results.reduce((prev, guildCount) => prev + guildCount, 0)}`);
 setInterval(() => {
   snekfetch.post(`https://discordbots.org/api/bots/stats`)
     .set('Authorization', `${dblToken}`)
@@ -68,7 +68,7 @@ recursive("./commands/", function (err, files) {
 client.on('message', message =>{
   if (message.author.bot) return;
 
-  if (message.channel.type === "dm") return
+  if (message.channel.type === "dm") return message.reply("please use that command inside a server!")
     
   let prefix = "g!"
   if (bannedIDs.some(id => message.author.id === id)) return message.channel.send("You cannot use this command, as you have been bot banned. Join the support server to appeal your ban.")
