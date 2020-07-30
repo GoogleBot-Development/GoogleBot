@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
 
-exports.run = (client, message, args) => {
+exports.run = (client, message, args, async) => {
       var ping = Date.now() - message.createdTimestamp + "ms";
 let pingEmbed = new Discord.MessageEmbed()
      .setColor("RANDOM")
