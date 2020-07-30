@@ -24,4 +24,4 @@ exports.help = {
   category: "Utility"
 }
 
-exports.aliases = []
+exports.aliases = ["p"]
