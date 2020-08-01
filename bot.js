@@ -68,7 +68,7 @@ recursive("./commands/", function (err, files) {
 client.on('message', message =>{
   if (message.author.bot) return;
 
-  if (message.channel.type === "dm") return message.reply("please use that command inside a server!")
+  if (message.channel.type === "dm") return message.channel.send("Please use this command inside a server!")
     
   let prefix = "g!"
   if (bannedIDs.some(id => message.author.id === id)) return message.channel.send("You cannot use this command, as you have been bot banned. Join the support server to appeal your ban.")
