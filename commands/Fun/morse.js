@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
 			}
 			let morseEmbed = new Discord.MessageEmbed()
 			.setColor("RANDOM")
-			.setDescription("```+text+```")
+			.setDescription(`\`\`\`${text}\`\`\``)
 			.setTimestamp()
 			.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
 			return message.channel.send(morseEmbed)
