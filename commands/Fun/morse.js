@@ -2,7 +2,12 @@ const Discord = require("discord.js")
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
 
 module.exports.run = async (bot, message, args) => {
-    if(!args[0]) return message.channel.send("```.--. .-.. . .- ... . / .--. ..- - / ... --- -- . - .... .. -. --. / ..-. --- .-. / -- . / - --- / - .-. .- -. ... .-.. .- - . ```")
+	let errorEmbed = new Discord.MessageEmbed()
+	.setColor("RED")
+	.setDescription("```.--. .-.. . .- ... . / .--. ..- - / ... --- -- . - .... .. -. --. / ..-. --- .-. / -- . / - --- / - .-. .- -. ... .-.. .- - . ```")
+	.setTimestamp()
+	.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
+    if(!args[0]) return message.channel.send(errorEmbed)
 
     let alpha = " ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split(""),
 				morse = "/,.-,-...,-.-.,-..,.,..-.,--.,....,..,.---,-.-,.-..,--,-.,---,.--.,--.-,.-.,...,-,..-,...-,.--,-..-,-.--,--..,.----,..---,...--,....-,.....,-....,--...,---..,----.,-----".split(","),
