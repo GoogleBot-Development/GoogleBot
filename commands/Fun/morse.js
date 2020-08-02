@@ -1,4 +1,5 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js")
+const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
 
 module.exports.run = async (bot, message, args) => {
     if(!args[0]) return message.channel.send("```.--. .-.. . .- ... . / .--. ..- - / ... --- -- . - .... .. -. --. / ..-. --- .-. / -- . / - --- / - .-. .- -. ... .-.. .- - . ```")
@@ -24,7 +25,12 @@ module.exports.run = async (bot, message, args) => {
 				}
 				text = text.join(" ");
 			}
-			return message.channel.send("```"+text+"```");
+			let morseEmbed = new Discord.MessageEmbed()
+			.setColor("RANDOM")
+			.setDescription("```+text+```")
+			.setTimestamp()
+			.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
+			return message.channel.send(morseEmbed)
 
 }
 
