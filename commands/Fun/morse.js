@@ -9,8 +9,8 @@ module.exports.run = async (client, message, args) => {
 	.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
     if(!args[0]) return message.channel.send(errorEmbed)
 
-    let alpha = " ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split(""),
-				morse = "/,.-,-...,-.-.,-..,.,..-.,--.,....,..,.---,-.-,.-..,--,-.,---,.--.,--.-,.-.,...,-,..-,...-,.--,-..-,-.--,--..,.----,..---,...--,....-,.....,-....,--...,---..,----.,-----".split(","),
+    let alpha = " ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?:'\"@&()+=/,".split(""),
+				morse = "/,.-,-...,-.-.,-..,.,..-.,--.,....,..,.---,-.-,.-..,--,-.,---,.--.,--.-,.-.,...,-,..-,...-,.--,-..-,-.--,--..,.----,..---,...--,....-,.....,-....,--...,---..,----.,-----,-.-.--,..--..,---...,.----.,.-..-.,.--.-.,.-...,-.--.,-.--.-,.-.-.,-...-,-..-.,--..--".split(","),
 				text = args.join(" ").toUpperCase();
 			while (text.includes("Ä") || text.includes("Ö") || text.includes("Ü")) {
 				text = text.replace("Ä","AE").replace("Ö","OE").replace("Ü","UE");
@@ -30,13 +30,14 @@ module.exports.run = async (client, message, args) => {
 				}
 				text = text.join(" ");
 			}
-	
+			
+
 			let morseEmbed = new Discord.MessageEmbed()
 			.setColor("RANDOM")
 			.setDescription(`\`\`\`${text}\`\`\``)
 			.setTimestamp()
 			.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
-			return message.channel.send(morseEmbed)
+			message.channel.send(morseEmbed) 
 
 }
 
