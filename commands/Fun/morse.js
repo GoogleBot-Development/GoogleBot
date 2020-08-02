@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
 	.setDescription("```.--. .-.. . .- ... . / .--. ..- - / ... --- -- . - .... .. -. --. / ..-. --- .-. / -- . / - --- / - .-. .- -. ... .-.. .- - . ```")
 	.setTimestamp()
 	.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
-    if(!args[0]) return message.channel.send(errorEmbed)
+	if(!args[0]) return message.channel.send(errorEmbed)
 
     let alpha = " ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?:'\"@&()+=/,".split(""),
 				morse = "/,.-,-...,-.-.,-..,.,..-.,--.,....,..,.---,-.-,.-..,--,-.,---,.--.,--.-,.-.,...,-,..-,...-,.--,-..-,-.--,--..,.----,..---,...--,....-,.....,-....,--...,---..,----.,-----,-.-.--,..--..,---...,.----.,.-..-.,.--.-.,.-...,-.--.,-.--.-,.-.-.,-...-,-..-.,--..--".split(","),
@@ -30,7 +30,7 @@ module.exports.run = async (client, message, args) => {
 				}
 				text = text.join(" ");
 			}
-			
+			if(text.length > 2047) return message.channel.send("Your message is too long for me to translate!")
 
 			let morseEmbed = new Discord.MessageEmbed()
 			.setColor("RANDOM")
