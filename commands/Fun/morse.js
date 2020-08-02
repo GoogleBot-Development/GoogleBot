@@ -30,7 +30,7 @@ module.exports.run = async (client, message, args) => {
 				}
 				text = text.join(" ");
 			}
-			if(message.content !== alpha) return message.channel.send("Please make sure that the only characters you typed were English letters and numbers!")
+	
 			let morseEmbed = new Discord.MessageEmbed()
 			.setColor("RANDOM")
 			.setDescription(`\`\`\`${text}\`\`\``)
