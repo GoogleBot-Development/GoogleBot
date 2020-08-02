@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 	let errorEmbed = new Discord.MessageEmbed()
 	.setColor("RED")
 	.setDescription("```.--. .-.. . .- ... . / .--. ..- - / ... --- -- . - .... .. -. --. / ..-. --- .-. / -- . / - --- / - .-. .- -. ... .-.. .- - . ```")
@@ -30,6 +30,7 @@ module.exports.run = async (bot, message, args) => {
 				}
 				text = text.join(" ");
 			}
+			if(message.content !== alpha) return message.channel.send("Please make sure that the only characters you typed were English letters and numbers!")
 			let morseEmbed = new Discord.MessageEmbed()
 			.setColor("RANDOM")
 			.setDescription(`\`\`\`${text}\`\`\``)
