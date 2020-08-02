@@ -31,6 +31,7 @@ recursive("./commands/", function (err, files) {
   .addField("Fun Commands", fun.join(", "))
   .addField("Action Commands", actions.join(", "))
   .addField("Utility Commands", utility.join(", "))
+  .setTimestamp()
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
   message.channel.send(embed)
 
