@@ -46,4 +46,4 @@ exports.help = {
     category: "Fun"
   }
   
-  exports.aliases = [""]
+  exports.aliases = []
