@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
 exports.help = {
     name: "math",
     description: "Does your homework for you! We're kidding on this one, but this thing can do some serious math.\nSigns:\n`+` is for Addition\n`-` is for Subtraction\n`*` is for Multiplication\n`/` is for Division\nAnd if you need the first 16 digits of pi, just input `pi` and it'll slide that out",
-    usage: "math",
+    usage: "math [number][sign][number]",
     category: "Fun"
 }
   
