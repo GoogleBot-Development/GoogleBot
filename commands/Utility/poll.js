@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
 exports.help = {
   name: "poll",
   description: "I can make a quickpoll for you!",
-  usage: "poll <question>",
+  usage: "poll [question]",
   category: "Utility"
 }
 
