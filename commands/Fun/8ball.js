@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
 exports.help = {
   name: "8ball",
   description: "Gives a response to a question",
-  usage: "8ball <question>",
+  usage: "8ball [question]",
   category: "Fun"
 }
 
