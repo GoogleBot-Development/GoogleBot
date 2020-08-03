@@ -38,7 +38,7 @@ exports.run = (client, message, args) => {
 exports.help = {
   name: "weather",
   description: "I can display the weather! Just give me a city or a town that I can scan.",
-  usage: "weather <city/town>",
+  usage: "weather [city/town]",
   category: "Google"
 }
 
