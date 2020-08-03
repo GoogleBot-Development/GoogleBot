@@ -34,7 +34,7 @@ exports.run = (client, message, args) => {
 exports.help = {
   name: "bite",
   description: "Bites the mentioned user",
-  usage: "bite <user>",
+  usage: "bite [@user]",
   category: "Actions"
 }
 
