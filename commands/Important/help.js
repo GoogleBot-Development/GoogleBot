@@ -64,7 +64,7 @@ recursive("./commands/", function (err, files) {
 exports.help = {
   name: "help",
   description: "Shows all of my beautiful commands!",
-  usage: "help [command name]",
+  usage: "help <command name>",
   category: "Utility"
 }
 
