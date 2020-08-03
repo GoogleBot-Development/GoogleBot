@@ -2,8 +2,7 @@ const req = require('node-superfetch');
 const Discord = require('discord.js')
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
 
-module.exports.run = async (client, message, args) => {
-  if(message.content !== 'g!advice') return
+exports.run = async (client, message, args) => {
   try {
     const {
       body
