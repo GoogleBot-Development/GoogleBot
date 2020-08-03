@@ -44,7 +44,7 @@ module.exports.run = async (client, message, args) => {
 exports.help = {
     name: "morse",
     description: "I can translate your text into Morse Code! Just input something, and I will translate it.\nI can only do letters and numbers in the english language.\nYou can click [here](https://morsecode.world/international/translator.html) to compare the Morse Code.",
-    usage: "morse [text]",
+    usage: "morse [text/code]",
     category: "Fun"
   }
   
