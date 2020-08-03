@@ -30,7 +30,7 @@ exports.run = (client, message, args) => {
 exports.help = {
   name: "like",
   description: "Gives a like to the mentioned user",
-  usage: "like <user>",
+  usage: "like [@user]",
   category: "Actions"
 }
 
