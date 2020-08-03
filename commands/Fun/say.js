@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
 exports.help = {
   name: "say",
   description: "Lets the bot say whatever you want",
-  usage: "say <text>",
+  usage: "say [text]",
   category: "Fun"
 }
 
