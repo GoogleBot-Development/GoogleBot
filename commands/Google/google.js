@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
 exports.help = {
   name: "google",
   description: "Gives me something to search!",
-  usage: "google <query>",
+  usage: "google [query]",
   category: "Google"
 }
 
