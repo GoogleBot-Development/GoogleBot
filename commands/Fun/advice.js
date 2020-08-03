@@ -3,6 +3,7 @@ const Discord = require('discord.js')
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
 
 module.exports.run = async (client, message, args) => {
+  if(message.content !== 'g!advice') return
   try {
     const {
       body
@@ -27,4 +28,4 @@ exports.help = {
     category: "Fun"
   }
   
-  exports.aliases = [""]
+  exports.aliases = []
