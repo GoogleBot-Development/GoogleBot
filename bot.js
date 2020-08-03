@@ -2,26 +2,8 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 const Discord = require("discord.js");
 const client = new Discord.Client()
 
-const snekfetch = require('snekfetch');
-const DBL = require("dblapi.js");
-const dbl = new DBL(`${dblToken}`, client);
-
 client.commands = new Discord.Collection()
 client.aliases = new Discord.Collection()
-
-client.on("ready", async () => {
-  client.shard.fetchClientValues('guilds.cache.size')
-	.then(results => {
-		let food = (`${results.reduce((prev, guildCount) => prev + guildCount, 0)}`);
-setInterval(() => {
-  snekfetch.post(`https://discordbots.org/api/bots/stats`)
-    .set('Authorization', `${dblToken}`)
-    .send({ server_count: food })
-    .then(() => console.log(`Updated top.gg server count`))
-    .catch(err => console.error(`Whoops something went wrong: ${err.body}`));
-}, 300000)
-  }).catch(console.error)
-})
 
 require("fs").readdir("./events/", (err, files) => {
   if (err) return console.error(err);
@@ -68,9 +50,9 @@ recursive("./commands/", function (err, files) {
 client.on('message', message =>{
   if (message.author.bot) return;
 
-  if (message.channel.type === "dm") return message.channel.send("Please use this command inside a server!")
+  if (message.channel.type === "dm") return message.reply("please use that command inside a server!")
     
-  let prefix = "g!"
+  let prefix = "gb!"
   if (bannedIDs.some(id => message.author.id === id)) return message.channel.send("You cannot use this command, as you have been bot banned. Join the support server to appeal your ban.")
   if(bannedServerIDs.some(b => message.guild.id == b)) return message.channel.send("You cannot use this command, as this server has been bot banned. Join the support server to appeal the ban.")
     
@@ -100,5 +82,52 @@ client.on('message', message =>{
   }
     
 })
+
+client.on('guildCreate', message => {
+  let guild = message
+  client.shard.fetchClientValues('guilds.cache.size')
+  .then(results => {
+    let chicken = (`${results.reduce((prev, guildCount) => prev + guildCount, 0)}`)
+  let joinEmbed = new Discord.MessageEmbed()
+  .setColor("GREEN")
+  .setAuthor("I have just joined a server!", message.client.user.displayAvatarURL( { format : "png"} ))
+  .setTitle("Server Joined")
+  .setDescription(`I have just joined a server! I am now in \`${chicken}\` servers!`)
+  .addField("Server Name:", guild.name)
+  .addField("Server Member Count:", guild.memberCount)
+  .addField("Server Owner:", guild.owner)
+  .addField("Channel Count:", guild.channels.cache.size)
+  .addField("Role Count:", guild.roles.cache.size)
+  .setTimestamp()
+  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format : "png"} ))
+  let log = client.channels.cache.get("728042499041525792")
+    let webhook = new Discord.WebhookClient("739962361548505239", "Bhe017bH-H_7TcgBGkYvJTl__0ENLYdrk2UldwJax8XMC0dp4wVs0neKlGLqlmv5WZM6")
+    
+    webhook.send(joinEmbed)
+  }).catch(console.error)
+})
+  
+client.on('guildDelete', message => {
+  let guild = message
+  client.shard.fetchClientValues('guilds.cache.size')
+  .then(results => {
+    let chicken = (`${results.reduce((prev, guildCount) => prev + guildCount, 0)}`)
+  let leaveEmbed = new Discord.MessageEmbed()
+  .setColor("RED")
+  .setAuthor("I have just left a server!", message.client.user.displayAvatarURL( { format : "png"} ))
+  .setTitle("Server Left")
+  .setDescription(`I have just left a server! I am now in \`${chicken}\` servers!`)
+  .addField("Server Name:", guild.name)
+  .addField("Server Member Count:", guild.memberCount)
+  .addField("Server Owner:", guild.owner)
+  .setTimestamp()
+  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format : "png"} ))
+  let log = client.channels.cache.get("72806901501185229")
+    let webhook = new Discord.WebhookClient("739965365248852029", "MUVBrXRpxfb9mhohMsUmKcWLTodwghqnSEqPNxnvsJwzA5qFEQyGhju3oEQ1NYfnXDVe")
+    
+    webhook.send(leaveEmbed)
+  }).catch(console.error)
+})
+ 
 
 client.login(token)
