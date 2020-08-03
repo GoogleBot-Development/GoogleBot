@@ -36,7 +36,7 @@ message.channel.send(embed)
 exports.help = {
   name: "userinfo",
   description: "I can get the userinfo of the mentioned person, or if you *don't* mention anyone I will get your userinfo.",
-  usage: "userinfo [@user]",
+  usage: "userinfo <@user>",
   category: "Utility"
 }
 
