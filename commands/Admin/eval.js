@@ -72,7 +72,7 @@ exports.run = async (bot, message, a) => {
 exports.help = {
     name: "eval",
     description: "Evaluates certain JS code.",
-    usage: "eval <Text-To-Evaluate>",
+    usage: "eval [code]",
     category: "Administrator"
 }
 
