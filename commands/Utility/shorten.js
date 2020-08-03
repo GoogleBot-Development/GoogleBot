@@ -18,4 +18,4 @@ exports.help = {
     category: "Utility"
   }
   
-  exports.aliases = ["url"]
+  exports.aliases = ["tinyurl"]
