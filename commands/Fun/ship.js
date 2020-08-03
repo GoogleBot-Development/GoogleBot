@@ -24,8 +24,8 @@ exports.run = (client, message, args, funcs) => {
 exports.help = {
     name: "ship",
     description: "Ships two things together!",
-    usage: "ship",
+    usage: "ship [object 1] [object 2]",
     category: "Fun"
   }
   
-  exports.aliases = ["combine"]
+  exports.aliases = ["combine", "rate"]
