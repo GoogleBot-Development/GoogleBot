@@ -20,7 +20,7 @@ exports.run = (client, message, args) => {
 exports.help = {
   name: "youtube",
   description: "I will search on YouTube for your search.",
-  usage: "youtube <query>",
+  usage: "youtube [query]",
   category: "Google"
 }
 
