@@ -15,7 +15,7 @@ exports.run = (client, message, args) => {
 exports.help = {
     name: "greentext",
     description: "Makes whatever you type green!",
-    usage: "greentext",
+    usage: "greentext [text]",
     category: "Fun"
   }
   
