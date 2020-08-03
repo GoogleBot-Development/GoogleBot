@@ -53,7 +53,7 @@ exports.run = (client, message, args) => {
 exports.help = {
   name: "punch",
   description: "Punches the mentioned user",
-  usage: "punch <user>",
+  usage: "punch [@user]",
   category: "Actions"
 }
 
