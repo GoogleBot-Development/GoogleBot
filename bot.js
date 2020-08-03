@@ -1,5 +1,5 @@
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("./config.json");
-const Discord = require("discord.js");
+const Discord = require("discord.js")
 const client = new Discord.Client()
 
 client.commands = new Discord.Collection()
