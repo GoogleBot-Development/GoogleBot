@@ -26,7 +26,7 @@ exports.run = (client, message, args) => {
 exports.help = {
   name: "kill",
   description: "Kills the mentioned user",
-  usage: "kill <user>",
+  usage: "kill [@user]",
   category: "Actions"
 }
 
