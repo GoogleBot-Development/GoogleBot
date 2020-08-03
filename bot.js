@@ -52,7 +52,7 @@ client.on('message', message =>{
 
   if (message.channel.type === "dm") return message.reply("please use that command inside a server!")
     
-  let prefix = "gb!"
+  let prefix = "g!"
   if (bannedIDs.some(id => message.author.id === id)) return message.channel.send("You cannot use this command, as you have been bot banned. Join the support server to appeal your ban.")
   if(bannedServerIDs.some(b => message.guild.id == b)) return message.channel.send("You cannot use this command, as this server has been bot banned. Join the support server to appeal the ban.")
     
