@@ -1,5 +1,5 @@
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("./config.json");
-const Discord = require("discord.js")
+const Discord = require("discord.js");
 const client = new Discord.Client()
 
 client.commands = new Discord.Collection()
@@ -78,7 +78,7 @@ client.on('message', message =>{
     const log = client.channels.cache.get("737634243856957440")
     const webhook = new Discord.WebhookClient("737634618945044521", "VYbbEr87UpsKZNvZgHSbiyilpd718gz3fUUX7j3s-1AHjzrI2MEYR0xSMb0HwT50vmcK")
     
-    webhook.send(new Discord.MessageEmbed().setColor(0x008000).setTitle("Command Ran").setDescription(`**User** - ${message.author.tag}\n**Ran in** - ${message.guild.name}\n**Command Ran** - g!${c.help.name}`).setThumbnail(message.author.displayAvatarURL()))
+    webhook.send(new Discord.MessageEmbed().setColor("RANDOM").setTitle("Command Ran").setDescription(`**User** - ${message.author.tag}\n**User ID** - ${message.author.id}\n\n**Server Name** - ${message.guild.name}\n**Server ID** - ${message.guild.id}\n\n**Command Ran** - g!${c.help.name}`).setThumbnail(message.author.displayAvatarURL()))
   }
     
 })
@@ -94,6 +94,7 @@ client.on('guildCreate', message => {
   .setTitle("Server Joined")
   .setDescription(`I have just joined a server! I am now in \`${chicken}\` servers!`)
   .addField("Server Name:", guild.name)
+  .addField("Server ID", guild.id)
   .addField("Server Member Count:", guild.memberCount)
   .addField("Server Owner:", guild.owner)
   .addField("Channel Count:", guild.channels.cache.size)
@@ -118,6 +119,7 @@ client.on('guildDelete', message => {
   .setTitle("Server Left")
   .setDescription(`I have just left a server! I am now in \`${chicken}\` servers!`)
   .addField("Server Name:", guild.name)
+  .addField("Server ID", guild.id)
   .addField("Server Member Count:", guild.memberCount)
   .addField("Server Owner:", guild.owner)
   .setTimestamp()
