@@ -31,6 +31,13 @@ module.exports.run = async (client, message, args) => {
 				text = text.join(" ");
 			}
 			if(text.length > 999) return message.channel.send("Your message is too long for me to translate!")
+			let invalid = false
+				if (invalid === true) return
+				if (!text) {
+					invalid = true
+					return message.reply("one of your characters was invalid, or I cannot translate that!")
+				}
+			if (invalid === true) return;
 
 			let morseEmbed = new Discord.MessageEmbed()
 			.setColor("RANDOM")
@@ -38,13 +45,12 @@ module.exports.run = async (client, message, args) => {
 			.setTimestamp()
 			.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
 			message.channel.send(morseEmbed) 
-
 }
 
 exports.help = {
     name: "morse",
     description: "I can translate your text into Morse Code! Just input something, and I will translate it.\nI can only do letters and numbers in the english language.\nYou can click [here](https://morsecode.world/international/translator.html) to compare the Morse Code.",
-    usage: "morse [text/code]",
+    usage: "morse [text]",
     category: "Fun"
   }
   
