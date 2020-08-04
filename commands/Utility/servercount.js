@@ -4,7 +4,7 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 exports.run = (client, message, args) => {
 client.shard.fetchClientValues('guilds.cache.size')
     .then(result => {
-      message.channel.send(`Total Shards: 2\nTotal Servers per Shard:\n${result}`)
+      message.channel.send(`Total Shards: 3\nTotal Servers per Shard:\n${result}`)
     })
     client.shard.fetchClientValues('guilds.cache.size')
 	.then(results => {
