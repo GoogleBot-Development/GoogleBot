@@ -11,7 +11,6 @@ exports.run = (client, message, args) => {
       .setTimestamp()
       .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
       message.channel.send(sayEmbed)
-      message.delete().catch(O_o=>{});
 }
 
 exports.help = {
