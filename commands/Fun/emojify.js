@@ -9,13 +9,13 @@ const mapping = {
     mapping[e] = mapping[e.toUpperCase()] = ` :regional_indicator_${e}:`;
 });
     if (args.length < 1) return message.reply('you must send something to emojify!')
-    if (args.join(" ").length > 75) return message.reply("That exceeds the 75 Character Limit, please turn it down a notch!")
+    if (args.join(" ").length > 75) return message.reply("your message is too long!")
     let invalid = false
     args.join(" ").split("").forEach(e => {
         if (invalid === true) return
         if (!mapping[e]) {
             invalid = true
-            return message.channel.send("Invalid String")
+            return message.reply("ine of your characters was invalid!")
         }
     });
     if (invalid === true) return;
