@@ -3,7 +3,6 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 
 exports.run = (client, message, args) => {
   message.channel.send("Getting the ping...").then(msg => {
-      msg.delete()
       var ping = msg.createdTimestamp - message.createdTimestamp + "ms";
 let pingEmbed = new Discord.MessageEmbed()
      .setColor("RANDOM")
@@ -13,7 +12,7 @@ let pingEmbed = new Discord.MessageEmbed()
      .addField("Message Ping:", `:hourglass_flowing_sand: ${ping}`, true)
      .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
      .setTimestamp()
-     message.channel.send(pingEmbed)
+     msg.edit(pingEmbed)
 });
 }
 
