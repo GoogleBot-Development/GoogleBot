@@ -15,6 +15,7 @@ exports.run = (client, message, args) => {
     .addField("Version 2.6 Update:", "Added `g!morse <text>` | I can now translate your text into Morse Code! Only supports letters and numbers in the English language")
     .addField("Version 2.6.5 Update:", "Updated the `g!morse` command so that you can now input your Morse Code into it, and it will translate back to English! Also added more characters on the keyboard to work with.")
     .addField("Version 2.7 Update:", "Added `g!shorten` | I can shorten your URL into a small one!")
+    .addField("Version 2.8.5 Update:", "Added `g!bitly` | I can shorten whatever URL you input into a Bitly Link!\nUpdated `g!shorten` to `g!tinyurl` to make more sense.")
     .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
     .setTimestamp()
     message.channel.send(newEmbed)
