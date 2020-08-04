@@ -30,7 +30,7 @@ module.exports.run = async (client, message, args) => {
 				}
 				text = text.join(" ");
 			}
-			if(text.length > 2047) return message.channel.send("Your message is too long for me to translate!")
+			if(text.length > 999) return message.channel.send("Your message is too long for me to translate!")
 
 			let morseEmbed = new Discord.MessageEmbed()
 			.setColor("RANDOM")
