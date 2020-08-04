@@ -15,7 +15,7 @@ const mapping = {
         if (invalid === true) return
         if (!mapping[e]) {
             invalid = true
-            return message.reply("ine of your characters was invalid!")
+            return message.reply("one of your characters was invalid!")
         }
     });
     if (invalid === true) return;
