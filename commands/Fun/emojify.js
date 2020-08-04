@@ -9,6 +9,15 @@ const mapping = {
     mapping[e] = mapping[e.toUpperCase()] = ` :regional_indicator_${e}:`;
 });
     if (args.length < 1) return message.reply('you must send something to emojify!')
+    let invalid = false
+    args.join(" ").split("").forEach(e => {
+        if (invalid === true) return
+        if (!mapping[e]) {
+            invalid = true
+            return message.channel.send("Invalid String")
+        }
+    });
+    if (invalid === true) return;
     message.channel.send(
         args.join(' ')
             .split('')
