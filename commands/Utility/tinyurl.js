@@ -17,9 +17,9 @@ exports.run = (client, message, args) => {
 }
 
 exports.help = {
-    name: "shorten",
-    description: "I can shorten whatever URL you input!",
-    usage: "shorten [link]",
+    name: "tinyurl",
+    description: "I can shorten whatever URL you input into a TinyURL Link!",
+    usage: "tinyurl [link]",
     category: "Utility"
   }
   
