@@ -1,5 +1,5 @@
  const Discord = require('discord.js')
-const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
+const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json")
 
 exports.run = (client, message, args) => {
   let newEmbed = new Discord.MessageEmbed()
