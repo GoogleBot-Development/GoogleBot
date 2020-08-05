@@ -4,7 +4,7 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 
 exports.run = (client, message, args) => {
  args = args.join(" ")
-   let fun = [], actions = [], google = [], important = [], utility = []
+   let fun = [], actions = [], google = [], important = [], links = [], utility = []
 
   if (!args) {
    
@@ -19,6 +19,7 @@ recursive("./commands/", function (err, files) {
     if (f.startsWith("commands/Google")) google.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Actions")) actions.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Important")) important.push(`\`${props.help.name}\``)
+   if (f.startsWith("commands/Links")) links.push(`\`${props.help.name}\``)
 })
 
   const embed = new Discord.MessageEmbed()
@@ -30,6 +31,7 @@ recursive("./commands/", function (err, files) {
   .addField("Google Commands", google.join(", "))
   .addField("Fun Commands", fun.join(", "))
   .addField("Action Commands", actions.join(", "))
+  .addField("Link Shorteners", links.join(", "))
   .addField("Utility Commands", utility.join(", "))
   .setTimestamp()
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
