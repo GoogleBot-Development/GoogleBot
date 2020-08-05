@@ -25,7 +25,7 @@ recursive("./commands/", function (err, files) {
   const embed = new Discord.MessageEmbed()
   .setColor("RANDOM")
   .setAuthor("GoogleBot Command List", message.author.displayAvatarURL({format: "png"}))
-  .setDescription("Hello! This is my command list of all the commands that I have to offer you! Need help? Join our support server by clicking [here](https://discord.gg/4a9pk8q).\n\nDo `g!help [command name]` to see more information on a command!")
+  .setDescription("Hello! This is my command list of all the commands that I have to offer you! Need help? Join our support server by clicking [here](https://discord.gg/4a9pk8q).\n\nDo `g!help [command name]` to see more information on a command!\n")
   .setThumbnail(client.user.displayAvatarURL())
   .addField(":pushpin: Important Commands", important.join(", "))
   .addField("<a:googling:725146281206349925> Google Commands", google.join(", "))
