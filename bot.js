@@ -16,7 +16,7 @@ client.on("ready", async () => {
 setInterval(() => {
   snekfetch.post(`https://discordbots.org/api/bots/stats`)
     .set('Authorization', `${dblToken}`)
-    .send({ server_count: "40,525" })
+    .send({ server_count: food })
     .then(() => console.log(`Updated top.gg server count`))
     .catch(err => console.error(`Whoops something went wrong: ${err.body}`));
 }, 600000)
