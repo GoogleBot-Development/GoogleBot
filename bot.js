@@ -2,8 +2,26 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 const Discord = require("discord.js");
 const client = new Discord.Client()
 
+const snekfetch = require('snekfetch');
+const DBL = require("dblapi.js");
+const dbl = new DBL(`${dblToken}`, client);
+
 client.commands = new Discord.Collection()
 client.aliases = new Discord.Collection()
+
+client.on("ready", async () => {
+  client.shard.fetchClientValues('guilds.cache.size')
+	.then(results => {
+		let food = (`${results.reduce((prev, guildCount) => prev + guildCount, 0)}`);
+setInterval(() => {
+  snekfetch.post(`https://discordbots.org/api/bots/stats`)
+    .set('Authorization', `${dblToken}`)
+    .send({ server_count: food })
+    .then(() => console.log(`Updated top.gg server count`))
+    .catch(err => console.error(`Whoops something went wrong: ${err.body}`));
+}, 300000)
+  }).catch(console.error)
+})
 
 require("fs").readdir("./events/", (err, files) => {
   if (err) return console.error(err);
