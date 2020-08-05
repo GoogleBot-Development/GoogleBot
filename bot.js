@@ -19,7 +19,7 @@ setInterval(() => {
     .send({ server_count: food })
     .then(() => console.log(`Updated top.gg server count`))
     .catch(err => console.error(`Whoops something went wrong: ${err.body}`));
-}, 300000)
+}, 600000)
   }).catch(console.error)
 })
 
