@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
   .setTimestamp()
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
   message.channel.send(moneyEmbed)
-  economy.add(`${user.id}`, amount)
+  economy.add(`wallet_${user.id}`, amount)
   economy.set(`daily_${user.id}`, Date.now())
 
 
