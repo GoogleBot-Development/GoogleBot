@@ -23,6 +23,14 @@ setInterval(() => {
   }).catch(console.error)
 })
 
+const fish = new DBL(dblToken, { webhookPort: 5000, webhookAuth: 'chicken' });
+fish.webhook.on('ready', hook => {
+  console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
+});
+fish.webhook.on('vote', vote => {
+  console.log(`User with ID ${vote.user} just voted!`);
+});
+
 require("fs").readdir("./events/", (err, files) => {
   if (err) return console.error(err);
 
