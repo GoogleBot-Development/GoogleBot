@@ -4,7 +4,7 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 
 exports.run = (client, message, args) => {
  args = args.join(" ")
-   let fun = [], actions = [], google = [], important = [], utility = [], links = []
+   let fun = [], actions = [], google = [], important = [], utility = [], links = [], economy = []
 
   if (!args) {
    
@@ -20,6 +20,7 @@ recursive("./commands/", function (err, files) {
     if (f.startsWith("commands/Actions")) actions.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Important")) important.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Links")) links.push(`\`${props.help.name}\``)
+   if (f.startsWith("commands/Economy")) economy.push(`\`${props.help.name}\``)
 })
 
   const embed = new Discord.MessageEmbed()
@@ -29,6 +30,7 @@ recursive("./commands/", function (err, files) {
   .setThumbnail(client.user.displayAvatarURL())
   .addField(":pushpin:  Important Commands", important.join(", "))
   .addField("<a:googling:725146281206349925>  Google Commands", google.join(", "))
+  .addField(":moneybag:  Economy Commands", economy.join(", "))
   .addField(":8ball:  Fun Commands", fun.join(", "))
   .addField(":punch:  Action Commands", actions.join(", "))
   .addField(":link:  Link Shorteners", links.join(", "))
@@ -51,7 +53,7 @@ recursive("./commands/", function (err, files) {
     console.log(aliases)
     const embed2 = new Discord.MessageEmbed()
     .setDescription(`Command Info on **${cmd.help.name}**\n\n**[Required Arguments]**\n**<Optional Arguments>**`)
-    .setColor("#4CEF8B")
+    .setColor("RANDOM")
     .setThumbnail(client.user.displayAvatarURL())
     .addField("Category", `**${cmd.help.category}**`, true)
     .addField("\u200b", "\u200b", true)
