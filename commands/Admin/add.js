@@ -10,6 +10,10 @@ if (!giveIDs.includes(message.author.id)) return
 
   let user = message.mentions.members.first() || message.author
 
+  if (args[1] === "wallet") currency = "GoogleCoins"
+  if (args[1] === "fish") currency = "Fish"
+  if (args[1] === "wheat") currency = "Wheat"
+
   let nanEmbed = new Discord.MessageEmbed()
   .setColor("RED")
   .setDescription(":x: That is not a number!")
@@ -21,7 +25,7 @@ if (!giveIDs.includes(message.author.id)) return
 
     let moneyEmbed = new Discord.MessageEmbed()
     .setColor("RED")
-    .setDescription(`<a:checkmark:736406591275794583> Added ${args[2]} ${args[1]} to ${user}\n\nNew Balance: ${bal}`)
+    .setDescription(`<a:checkmark:736406591275794583> Added ${args[2]} ${currency} to ${user}\n\nNew Balance: ${bal}`)
     .setTimestamp()
     .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
     message.channel.send(moneyEmbed)
