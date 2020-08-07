@@ -21,6 +21,7 @@
     "node-bitlyapi": "^0.4.0",
     "node-superfetch": "^0.1.10",
     "os": "^0.1.1",
+    "parse-ms": "^2.1.0",
     "quick.db": "^7.1.1",
     "snekfetch": "^4.0.4",
     "tinyurl": "^1.1.6",
