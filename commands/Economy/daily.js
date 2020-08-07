@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
   let timeout = 86400000;
   let amount = 100;
 
-  let daily = await economy.get(`${user.id}`);
+  let daily = await economy.get(`daily_${user.id}`);
 
   if (daily !== null && timeout - (Date.now() - daily) > 0) {
     let time = ms(timeout - (Date.now() - daily));
