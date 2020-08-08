@@ -104,7 +104,7 @@ exports.run = async (bot, message, args) => {
         .setTimestamp()
         .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
 
-        economy.add(`money_${message.guild.id}_${user.id}`, money)
+        economy.add(`wallet_${user.id}`, money)
         message.channel.send(Embed3)
     } let sEmbed = new Discord.MessageEmbed()
     .setColor("RED")
