@@ -73,7 +73,7 @@ exports.run = async (client, message, args) => {
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
 
   message.channel.send(embed5)
-  economy.add(`wallet_${userbal}`, args[1])
+  economy.add(`wallet_${user.id}`, args[1])
   economy.subtract(`wallet_${message.author.id}`, args[1])
 
 }
