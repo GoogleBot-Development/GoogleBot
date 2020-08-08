@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js")
 const db = require("quick.db");
 var economy = new db.table('economy')
 const ms = require("parse-ms");
