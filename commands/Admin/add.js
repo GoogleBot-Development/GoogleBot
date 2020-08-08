@@ -10,8 +10,8 @@ if (!giveIDs.includes(message.author.id)) return
 
   let user = message.mentions.members.first() || message.author
 
-  if (args[1] === "wallet") currency = "Wallet"
-  if (args[1] === "bank") currency = "Bank"
+  if (args[1] === "wallet") currency = "GoogleCoins"
+  if (args[1] === "bank") currency = "GoogleCoins"
   if (args[1] === "fish") currency = "Fish"
   if (args[1] === "wheat") currency = "Wheat"
 
