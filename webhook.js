@@ -1,17 +1,21 @@
 const secret = "GoogleBot123";
 const http = require('http');
-const crypto = require('crypto');
-const exec = require('child_process').exec;
+const createHandler = require('github-webhook-handler')
+const handler = createHandler({ path: '/webhook', secret: secret })
+
 
 http.createServer(function (req, res) {
-    req.on('data', async function (chunk) {
-        let sig = "sha1=" + crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex');
+  handler(req, res, function (err) {
+    res.statusCode = 404
+    res.end('no such location')
+  })
+}).listen(8080)
 
-        if (req.headers['x-hub-signature'] == sig) {
-            await exec('git pull');
-            process.exit();
-        }
-    });
-
-    res.end();
-}).listen(3001);
+handler.on('error', function (err) {
+  console.error('Error:', err.message)
+})
+ 
+handler.on('push', function (event) {
+  console.log("it worked!")
+});
+ 
