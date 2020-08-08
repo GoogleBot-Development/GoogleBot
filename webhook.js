@@ -13,7 +13,7 @@ http.createServer(function (req, res) {
 
 handler.on('error', function (err) {
   console.error('Error:', err.message)
-})
+});
  
 handler.on('push', function (event) {
   console.log("it worked!")
