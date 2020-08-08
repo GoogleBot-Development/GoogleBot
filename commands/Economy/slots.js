@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
   .setDescription(":x: That is not a number!")
   .setTimestamp()
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
-    if (isNaN(args[1])) return message.channel.send(nanEmbed)
+    if (isNaN(args[0])) return message.channel.send(nanEmbed)
 
     let moneymore = new Discord.MessageEmbed()
     .setColor("RED")
