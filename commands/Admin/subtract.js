@@ -10,13 +10,18 @@ exports.run = async (client, message, args) => {
 
   let user = message.mentions.members.first() || message.author;
 
+  if (args[1] === "wallet") currency = "Wallet"
+  if (args[1] === "bank") currency = "Bank"
+  if (args[1] === "fish") currency = "Fish"
+  if (args[1] === "wheat") currency = "Wheat"
+
     if (isNaN(args[2])) return;
     economy.subtract(`${args[1]}_${user.id}`, args[2])
     let bal = await economy.get(`${args[1]}_${user.id}`)
 
     let moneyEmbed = new Discord.MessageEmbed()
     .setColor("GREEN")
-    .setDescription(`<a:checkmark:736406591275794583> Removed **${args[2]}** ${args[1]} from ${user}\n\nNew Balance: ${bal}`)
+    .setDescription(`<a:checkmark:736406591275794583> Removed **${args[2]}** ${currency} from ${user}\n\nNew Balance: ${bal}`)
     .setTimestamp()
     .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
     message.channel.send(moneyEmbed)
