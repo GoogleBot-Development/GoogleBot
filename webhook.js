@@ -2,6 +2,8 @@ const secret = "GoogleBot123";
 const http = require('http');
 const crypto = require('crypto')
 const {exec} = require('child_process')
+const repo = "~/GoogleBot/";
+
 
 
 http.createServer((req, res) => {
@@ -16,7 +18,7 @@ http.createServer((req, res) => {
  
       if (isAllowed && isMaster) {
         try {
-        await exec('git pull')
+        await exec('cd ' + repo + ' && git pull')
         await exec('pm2 restart index')
         } catch (err) {
         console.log(err)
