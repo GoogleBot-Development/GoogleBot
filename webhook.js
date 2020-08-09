@@ -1,7 +1,7 @@
 const secret = "GoogleBot123";
 const http = require('http');
 const createHandler = require('github-webhook-handler')
-const handler = createHandler({ path: '/webhook', secret: secret })
+const handler = createHandler({ path: '/webhook', secret: secret });
 
 
 http.createServer(function (req, res) {
