@@ -5,3 +5,6 @@ Please do not copy this code, you kinda don't have the right to, as I haven't pu
 lmao this is a private repo stupid, abd besides, this is on github, so it's free use most of the time, they just can't copy googlebot entirely and claim it as their own
 
 i mean most peole just wander in and copy it
+
+
+ITS A PRIVATE REPOSITORY NOBODY CAN COME IN WITHOUT YOUR CONSENT
