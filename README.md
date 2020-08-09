@@ -8,3 +8,6 @@ i mean most peole just wander in and copy it
 
 
 ITS A PRIVATE REPOSITORY NOBODY CAN COME IN WITHOUT YOUR CONSENT
+
+yeah but like if it was a public repo peple would just come in and copy it thats why i made it private
+
