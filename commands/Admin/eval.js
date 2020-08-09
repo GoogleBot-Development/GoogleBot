@@ -20,7 +20,7 @@ exports.run = async (bot, message, a) => {
     }
 
     if (!args2) {
-      message.channel.send("What do you want me to evaluate idiot?");
+      message.channel.send("What do you want me to evaluate dum dum?");
       return;
   }
 
