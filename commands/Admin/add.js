@@ -1,19 +1,36 @@
 const Discord = require("discord.js")
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
-const db = require("quick.db");
-var economy = new db.table('economy')
+const userSchema = require('../../models/user.js')
+
 
 exports.run = async (client, message, args) => {
 
+
 let giveIDs = ["667354950321569792", "262410813254402048"]
 if (!giveIDs.includes(message.author.id)) return
-
+message.channel.send("Temporarily disabled")
+/*
   let user = message.mentions.members.first() || message.author
+  userSchema.findOne({id: user.id}, (err, res) => {
 
-  if (args[1] === "wallet") currency = "GoogleCoins"
-  if (args[1] === "bank") currency = "GoogleCoins"
-  if (args[1] === "fish") currency = "Fish"
-  if (args[1] === "wheat") currency = "Wheat"
+  let path = ""
+  let currency = ""
+  if (args[1] === "wallet") {
+    currency = "GoogleCoins"
+    path = "money.wallet"
+  }
+  if (args[1] === "bank") {
+     currency = "GoogleCoins"
+     path = "money.bank"
+  }
+  if (args[1] === "fish") {
+    currency = "Fish"
+    path = "fish"
+  }
+  if (args[1] === "wheat") {
+    currency = "Wheat"
+    path = "wheat"
+  }
 
   let nanEmbed = new Discord.MessageEmbed()
   .setColor("RED")
@@ -21,6 +38,8 @@ if (!giveIDs.includes(message.author.id)) return
   .setTimestamp()
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
     if (isNaN(args[2])) return message.channel.send(nanEmbed)
+    userSchema.updateOne({id: user.id}, {'money.wallet': res.money.wallet + amount, 'times.beg': Date.now()}, function(err, res) {if (err) console.log(err )})
+
     economy.add(`${args[1]}_${user.id}`, args[2])
     let bal = await economy.get(`${args[1]}_${user.id}`)
 
@@ -31,7 +50,9 @@ if (!giveIDs.includes(message.author.id)) return
     .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
     message.channel.send(moneyEmbed)
 
-}
+});
+*/
+};
 
 exports.help = {
   name: "add",

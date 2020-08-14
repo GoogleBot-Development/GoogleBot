@@ -1,13 +1,11 @@
 const Discord = require("discord.js");
-const db = require("quick.db");
-var economy = new db.table('economy')
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
 
 exports.run = async (client, message, args) => {
 
   let giveIDs = ["667354950321569792", "262410813254402048"]
   if (!giveIDs.includes(message.author.id)) return
-
+/*
   let user = message.mentions.members.first() || message.author;
 
   if (args[1] === "wallet") currency = "GoogleCoins"
@@ -25,7 +23,7 @@ exports.run = async (client, message, args) => {
     .setTimestamp()
     .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
     message.channel.send(moneyEmbed)
-
+*/
 }
 
 exports.help = {
