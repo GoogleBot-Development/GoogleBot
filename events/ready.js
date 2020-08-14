@@ -1,5 +1,8 @@
+const mongoose = require('mongoose')
+
 module.exports = (client) => {
   console.log(`The shard launched successfully!`)
+  mongoose.connect(require('../config.json').mongo, {useNewUrlParser: true, useUnifiedTopology: true})
   
   setInterval(function() {
       let statuses = [ `g!help | 3 shards`, `people ping me...`, `g!help | Over 2500 servers!`, `Discord verify bots...` ];
