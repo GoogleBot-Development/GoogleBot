@@ -1,16 +1,18 @@
 const Discord = require('discord.js')
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
-const db = require("quick.db");
-var economy = new db.table('economy')
+const userSchema = require('../../models/user.js')
+
 
 exports.run = async (client, message, args) => {
 
   let user = message.mentions.members.first() || message.author;
+  userSchema.findOne({id: user.id}, (err, res) => {
+    if (!res) res = require('../../functions/start.js')(user);
 
-  let fish = await economy.get(`fish_${user.id}`)
+  let fish = res.fish
   if (fish === null) fish = 0
 
-  let wheat = await economy.get(`wheat_${user.id}`)
+  let wheat = res.wheat
   if (wheat === null) wheat = 0
 
   let moneyEmbed = new Discord.MessageEmbed()
@@ -19,7 +21,8 @@ exports.run = async (client, message, args) => {
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
   .setTimestamp()
   message.channel.send(moneyEmbed)
-}
+});
+};
 
 exports.help = {
     name: "inventory",

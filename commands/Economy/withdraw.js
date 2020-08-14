@@ -1,21 +1,22 @@
 const Discord = require("discord.js");
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
-const db = require("quick.db");
-var economy = new db.table('economy')
+const userSchema = require('../../models/user.js')
 const ms = require("parse-ms");
 
 exports.run = async (client, message, args) => {
 
   let user = message.author;
+  userSchema.findOne({id: user.id}, (err, res) => {
+    if (!res) res = require('../../functions/start.js')(user);
 
-  let member = economy.get(`wallet_${user.id}`)
-  let member2 = economy.get(`bank_${user.id}`)
+
+  let member = res.money.wallet
+  let member2 = res.money.bank
 
   if (args[0] == 'all') {
-    let money = await economy.get(`bank_${user.id}`)
-    
-    economy.subtract(`bank_${user.id}`, money)
-    economy.add(`wallet_${user.id}`, money)
+    let money = res.money.bank
+    userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + money, 'money.bank': res.money.bank - money}, function(err, res) {if (err) console.log(err )})
+
 
   let embed5 = new Discord.MessageEmbed()
   .setColor("GREEN")
@@ -58,7 +59,7 @@ exports.run = async (client, message, args) => {
   .setTimestamp()
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
 
-  if (member2 < args[0]) {
+  if (member2 < Number(args[0])) {
       return message.channel.send(embed4)
   }
 
@@ -69,10 +70,11 @@ exports.run = async (client, message, args) => {
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
 
   message.channel.send(embed5)
-  economy.subtract(`bank_${user.id}`, args[0])
-  economy.add(`wallet_${user.id}`, args[0])
+  userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + Number(args[0]), 'money.bank': res.money.bank - Number(args[0])}, function(err, res) {if (err) console.log(err )})
+
   }
-}
+});
+};
 
 exports.help = {
     name: "withdraw",

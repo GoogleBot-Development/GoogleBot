@@ -1,17 +1,22 @@
 const Discord = require('discord.js')
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
-const db = require("quick.db");
-var economy = new db.table('economy')
+const userSchema = require('../../models/user.js')
 
 exports.run = async (client, message, args) => {
 
   let user = message.mentions.members.first() || message.author;
+  userSchema.findOne({id: user.id}, (err, res) => {
+  if (!res) res = require('../../functions/start.js')(user);
 
-  let bal = economy.get(`wallet_${user.id}`)
-  if (bal === null) bal = 0
-
-  let bank = await economy.get(`bank_${user.id}`)
-  if (bank === null) bank = 0
+  let bal 
+  let bank 
+  if (!res) {
+    bal = 0
+    bank = 0
+  } else {
+    bal = res.money.wallet
+    bank = res.money.bank
+  }
 
   let moneyEmbed = new Discord.MessageEmbed()
   .setColor("RANDOM")
@@ -20,6 +25,7 @@ exports.run = async (client, message, args) => {
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
   .setTimestamp()
   message.channel.send(moneyEmbed)
+  });
 }
 
 exports.help = {

@@ -1,17 +1,17 @@
 const Discord = require('discord.js')
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
-const db = require("quick.db");
-var economy = new db.table('economy')
 const ms = require("parse-ms");
+const userSchema = require('../../models/user.js')
 
 exports.run = async (client, message, args) => {
 
   let user = message.author
-
-  let timeout = 45000;
+  userSchema.findOne({id: user.id}, (err, res) => {
+    if (!res) res = require('../../functions/start.js')(user);
+    let timeout = 45000;
   let amount = Math.floor(Math.random() * 5) +1;
 
-  let beg = await economy.get(`fishing_${user.id}`);
+  let beg = res.times.fishing
 
   if (beg !== null && timeout - (Date.now() - beg) > 0) {
     let time = ms(timeout - (Date.now() - beg));
@@ -29,9 +29,9 @@ exports.run = async (client, message, args) => {
   .setTimestamp()
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
   message.channel.send(moneyEmbed)
-  economy.add(`fish_${user.id}`, parseInt(amount))
-  economy.set(`fishing_${user.id}`, Date.now())
+  userSchema.updateOne({id: user.id}, {fish: res.fish + parseInt(amount), 'times.fishing': Date.now()}, function(err, res) {if (err) console.log(err )})
   }
+});
 }
 
 exports.help = {

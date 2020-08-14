@@ -1,5 +1,4 @@
-const db = require('quick.db')
-var economy = new db.table('economy')
+const userSchema = require('../../models/user.js')
 const Discord = require('discord.js')
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
 const ms = require("parse-ms");
@@ -7,7 +6,10 @@ const ms = require("parse-ms");
 exports.run = async (client, message, args) => {
 
     let user = message.author;
-    let author = await economy.get(`work_${user.id}`)
+    userSchema.findOne({id: user.id}, (err, res) => {
+    if (!res) res = require('../../functions/start.js')(user);
+
+    let author = res.times.work
 
     let timeout = 600000;
     
@@ -32,10 +34,9 @@ exports.run = async (client, message, args) => {
         .setTimestamp()
         .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
         message.channel.send(embed1)
-        
-        economy.add(`wallet_${user.id}`, amount)
-        economy.set(`work_${user.id}`, Date.now())
+        userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + amount, 'times.work': Date.now()}, function(err, res) {if (err) console.log(err )})
     };
+  });
 }
 
 exports.help = {

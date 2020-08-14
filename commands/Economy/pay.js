@@ -1,8 +1,7 @@
 const Discord = require("discord.js")
-const db = require("quick.db");
-var economy = new db.table('economy')
 const ms = require("parse-ms");
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
+const userSchema = require('../../models/user.js')
 
 exports.run = async (client, message, args) => {
 
@@ -16,10 +15,14 @@ exports.run = async (client, message, args) => {
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
   return message.channel.send(embed1)
   }
+  userSchema.findOne({id: message.author.id}, (err, author) => {
+    userSchema.findOne({id: user.id}, (err, usr) => {
+      if (!author) author = require('../../functions/start.js')(user);
+      if (!usr) usr = require('../../functions/start.js')(user);
 
-  let userbal = economy.get(`wallet_${user.id}`)
+  let userbal = usr.money.wallet
 
-  let member = economy.get(`wallet_${message.author.id}`)
+  let member = author.money.wallet
 
   if(!args[1]) {
   let embed2 = new Discord.MessageEmbed()
@@ -57,7 +60,7 @@ exports.run = async (client, message, args) => {
     return message.channel.send(embed3)
   }
 
-  if (member < args[1]) {
+  if (member < Number(args[1])) {
     let embed4 = new Discord.MessageEmbed()
     .setColor("RED")
     .setDescription(`:x: You don't have that much money!`)
@@ -73,10 +76,13 @@ exports.run = async (client, message, args) => {
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
 
   message.channel.send(embed5)
-  economy.add(`wallet_${user.id}`, args[1])
-  economy.subtract(`wallet_${message.author.id}`, args[1])
+  userSchema.updateOne({id: user.id}, {'money.wallet': usr.money.wallet + Number(args[1])}, function(err, res) {if (err) console.log(err )})
+  userSchema.updateOne({id: message.author.id}, {'money.wallet': author.money.wallet - Number(args[1])}, function(err, res) {if (err) console.log(err )})
 
-}
+
+});
+  });
+};
 
 exports.help = {
     name: "pay",

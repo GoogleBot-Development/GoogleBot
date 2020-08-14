@@ -1,13 +1,15 @@
 const slotItems = [":grapes:", ":watermelon:", ":peach:", ":apple:", ":seven:", ":strawberry:", ":cherries:"];
-const db = require("quick.db");
-var economy = new db.table('economy')
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
 const Discord = require('discord.js');
+const userSchema = require('../../models/user.js')
 
 exports.run = async (client, message, args) => {
 
     let user = message.author;
-    let moneydb = await economy.get(`wallet_${user.id}`)
+    userSchema.findOne({id: user.id}, (err, res) => {
+    if (!res) res = require('../../functions/start.js')(user);
+
+    let moneydb = res.money.wallet
     let money = parseInt(args[0]);
     let win = false;
 
@@ -50,7 +52,7 @@ exports.run = async (client, message, args) => {
             .setTimestamp()
             .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
         message.channel.send(slotsEmbed1)
-        economy.add(`wallet_${user.id}`, money)
+        userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + money}, function(err, res) {if (err) console.log(err )})
     } else {
         let slotsEmbed = new Discord.MessageEmbed()
             .setDescription(`${slotItems[number[0]]} | ${slotItems[number[1]]} | ${slotItems[number[2]]}\n\nYou lost **${money}** GoogleCoins!`)
@@ -58,9 +60,9 @@ exports.run = async (client, message, args) => {
             .setTimestamp()
             .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
         message.channel.send(slotsEmbed)
-        economy.subtract(`wallet_${user.id}`, money)
+        userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet - money}, function(err, res) {if (err) console.log(err )})
     }
-
+    });
 }
 
 exports.help = {

@@ -1,12 +1,14 @@
 const Discord = require("discord.js");
 const ms = require("parse-ms");
-const db = require("quick.db");
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
-var economy = new db.table('economy')
+const userSchema = require('../../models/user.js')
+
 
 exports.run = async (client, message, args) => {
 
   let user = message.author;
+  userSchema.findOne({id: user.id}, (err, res) => {
+    if (!res) res =  require('../../functions/start.js')(user);
 
   function isOdd(num) { 
 	if ((num % 2) == 0) return false;
@@ -15,7 +17,7 @@ exports.run = async (client, message, args) => {
     
 let colour = args[0];
 let money = parseInt(args[1]);
-let balance = await economy.get(`wallet_${user.id}`)
+let balance = res.money.wallet
 
 let random = Math.floor(Math.random() * 35);
 
@@ -62,7 +64,8 @@ return message.channel.send(moneymore)
     
     if (random == 0 && colour == 2) { // Green
         money *= 15
-        economy.add(`wallet_${user.id}`, money)
+        userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + money}, function(err, res) {if (err) console.log(err )})
+
         let moneyEmbed1 = new Discord.MessageEmbed()
         .setColor("GREEN")
         .setDescription(`:green_circle: You won **${money}** GoogleCoins!\n\nMultiplier: 15x`)
@@ -72,7 +75,8 @@ return message.channel.send(moneymore)
         console.log(`${message.author.tag} Won ${money} on green`)
     } else if (isOdd(random) && colour == 1) { // Red
         money = parseInt(money * 1.5)
-        economy.add(`wallet_${user.id}`, money)
+        userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + money}, function(err, res) {if (err) console.log(err )})
+
         let moneyEmbed2 = new Discord.MessageEmbed()
         .setColor("GREEN")
         .setDescription(`:red_circle: You won **${money}** GoogleCoins!\n\nMultiplier: 1.5x`)
@@ -81,7 +85,8 @@ return message.channel.send(moneymore)
         message.channel.send(moneyEmbed2)
     } else if (!isOdd(random) && colour == 0) { // Black
         money = parseInt(money * 2)
-        economy.add(`wallet_${user.id}`, money)
+        userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + money}, function(err, res) {if (err) console.log(err )})
+
         let moneyEmbed3 = new Discord.MessageEmbed()
         .setColor("GREEN")
         .setDescription(`:black_circle: You won **${money}** GoogleCoins!\n\nMultiplier: 2x`)
@@ -89,7 +94,8 @@ return message.channel.send(moneymore)
         .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
         message.channel.send(moneyEmbed3)
     } else { // Wrong
-        economy.subtract(`wallet_${user.id}`, money)
+      userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet - money}, function(err, res) {if (err) console.log(err )})
+
         let moneyEmbed4 = new Discord.MessageEmbed()
         .setColor("RED")
         .setDescription(`:x: You lost **${money}** GoogleCoins!\n\nMultiplier: 0x`)
@@ -97,6 +103,7 @@ return message.channel.send(moneymore)
         .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
         message.channel.send(moneyEmbed4)
     }
+});
 }
 
 exports.help = {
