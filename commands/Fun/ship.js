@@ -13,7 +13,7 @@ exports.run = (client, message, args, funcs) => {
       shipEmbed.setTitle(`Ship`)
       shipEmbed.setDescription(`I ship \`${first}\` and \`${second}\`, \`${percentage}\`%!`)
       shipEmbed.setColor("RANDOM");
-      shipEmbed.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+      shipEmbed.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
     message.channel.send(shipEmbed);
   } catch (e) {
     console.error;
