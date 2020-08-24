@@ -4,7 +4,7 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 
 exports.run = (client, message, args) => {
  args = args.join(" ")
-   let fun = [], actions = [], google = [], important = [], utility = [], links = [], economy = []
+   let fun = [], actions = [], search = [], important = [], utility = [], links = [], economy = []
 
   if (!args) {
    
@@ -16,7 +16,7 @@ recursive("./commands/", function (err, files) {
     let props = require(`../../${f}`);
     if (f.startsWith("commands/Fun")) fun.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Utility")) utility.push(`\`${props.help.name}\``)
-    if (f.startsWith("commands/Google")) google.push(`\`${props.help.name}\``)
+    if (f.startsWith("commands/Search")) search.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Actions")) actions.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Important")) important.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Links")) links.push(`\`${props.help.name}\``)
@@ -25,18 +25,18 @@ recursive("./commands/", function (err, files) {
 
   const embed = new Discord.MessageEmbed()
   .setColor("RANDOM")
-  .setAuthor("GoogleBot Command List", message.author.displayAvatarURL({format: "png"}))
-  .setDescription("Hello! This is my command list of all the commands that I have to offer you! Need help? Join our support server by clicking [here](https://discord.gg/4a9pk8q).\n\nDo `g!help [command name]` to see more information on a command!\n")
+  .setAuthor("GoogleBot Command List", message.author.displayAvatarURL({dynamic: true}))
+  .setDescription("Hello! This is my command list of all the commands that I have to offer you! Need help? Join our support server by clicking [here](https://discord.gg/y6Zxauk).\n\nDo `g!help [command name]` to see more information on a command!\n")
   .setThumbnail(client.user.displayAvatarURL())
   .addField(":pushpin:  Important Commands", important.join(", "))
-  .addField("<a:googling:725146281206349925>  Google Commands", google.join(", "))
+  .addField(":mag:  Search Commands", search.join(", "))
   .addField(":moneybag:  Economy Commands", economy.join(", "))
   .addField(":8ball:  Fun Commands", fun.join(", "))
   .addField(":punch:  Action Commands", actions.join(", "))
   .addField(":link:  Link Shorteners", links.join(", "))
-  .addField("<a:GoogleBot_Development:739180947647365161>  Utility Commands", utility.join(", "))
+  .addField(":tools:  Utility Commands", utility.join(", "))
   .setTimestamp()
-  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
   message.channel.send(embed)
 
   });
@@ -54,7 +54,7 @@ recursive("./commands/", function (err, files) {
     const embed2 = new Discord.MessageEmbed()
     .setDescription(`Command Info on **${cmd.help.name}**\n\n**[Required Arguments]**\n**<Optional Arguments>**`)
     .setColor("RANDOM")
-    .setThumbnail(client.user.displayAvatarURL())
+    .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
     .addField("Category", `**${cmd.help.category}**`, true)
     .addField("\u200b", "\u200b", true)
     .addField("Description", `**${cmd.help.description}**`, true)
