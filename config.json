@@ -2,13 +2,13 @@
     "prefix": [ "g!", "G!" ],
     "token": "NzIxMjE1OTQ5MDg4MzU4NDIw.XuRSsQ.uHhE1ZfEtVQp4pEtuTGmXIXL1fs",
     "year": "2020",
-    "version": "v3.0.5",
+    "version": "v3.1.1",
     "mainVersion": "3.0",
     "name": "GoogleBot",
     "ownerID": "667354950321569792",
     "mongo": "mongodb+srv://Jeydin21:GoogleBot123@googlebot.unb8h.azure.mongodb.net/GoogleBot?retryWrites=true&w=majority",
     "ownerUsername": "Jeydin21",
-    "bannedIDs": [ "486689069087064064", "648678633342500874", "713846683611693157" ],
-    "bannedServerIDs": [ "" ],
+    "bannedIDs": [""],
+    "bannedServerIDs": [""],
     "dblToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyMTIxNTk0OTA4ODM1ODQyMCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTk2ODQxMzQ2fQ.exZB_prnPxlIjERL1ye4QG7k7SypUvrKf3pxMZAWuWk"
  }
