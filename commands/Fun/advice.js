@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
     let adviceEmbed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setDescription(JSON.parse(body.toString()).slip.advice)
-    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
     .setTimestamp()
     
     message.channel.send(adviceEmbed);
