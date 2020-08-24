@@ -4,7 +4,7 @@ const userSchema = require('../../models/user.js')
 
 exports.run = async (client, message, args) => {
 
-  let user = message.mentions.members.first() || message.author;
+  let user = message.mentions.members.first() || client.users.cache.get(args[0]) || message.author;
   userSchema.findOne({id: user.id}, (err, res) => {
   if (!res) res = require('../../functions/start.js')(user);
 
@@ -19,10 +19,10 @@ exports.run = async (client, message, args) => {
   }
 
   let moneyEmbed = new Discord.MessageEmbed()
-  .setColor("RANDOM")
+  .setAuthor("Your balance", message.author.displayAvatarURL({dynamic: true}))
   .setColor("RANDOM")
   .setDescription(`**${user}'s GoogleCoin Balance**\n\nWallet: **${bal}**\nBank: **${bank}**`)
-  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
   .setTimestamp()
   message.channel.send(moneyEmbed)
   });
