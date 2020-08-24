@@ -9,6 +9,7 @@ exports.run = (client, message, args) => {
     TinyURL.shorten(mes, function(res) {
       let linksEmbed = new Discord.MessageEmbed()
       .setColor("RANDOM")
+      .setAuthor("TinyURL Link Shortener", message.author.displayAvatarURL({dynamic: true}))
       .setDescription(`<a:verified:739930427950891150> The link was successfully shortened!\n\n**Shorter Link:** ${res}\n**Original Link:** ${mes}`)
       .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
       .setTimestamp()
