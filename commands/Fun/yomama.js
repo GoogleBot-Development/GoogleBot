@@ -7,7 +7,7 @@ exports.run = (client, message, args) => {
     let mamaEmbed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setDescription(`${insult}`)
-    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
     .setTimestamp()
     message.channel.send(mamaEmbed)
 }
@@ -19,4 +19,4 @@ exports.help = {
   category: "Fun"
 }
 
-exports.aliases = ["mama", "yo mom"]
+exports.aliases = ["mama", "mom"]
