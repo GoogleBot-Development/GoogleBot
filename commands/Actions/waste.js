@@ -26,13 +26,13 @@ exports.run = (client, message, args) => {
                  "https://i.kym-cdn.com/photos/images/newsfeed/000/961/693/421.gif",
                  "https://i.kym-cdn.com/photos/images/newsfeed/000/954/645/c57.gif",  
                 ]
-    let user = message.mentions.users.first()
+    let user = message.mentions.users.first() || client.users.cache.get(args[0])
     if(!user) return message.reply('you must mention someone to waste!') 
     let embed = new Discord.MessageEmbed()
-  .setAuthor(`${message.author.username} wasted someone!`, message.author.displayAvatarURL({format: "png"}))
+  .setAuthor(`${message.author.username} wasted someone!`, message.author.displayAvatarURL({dynamic: true}))
   .setColor("RANDOM")
   .setDescription('**<@!'+ message.author.id +'> wasted <@!'+ user.id +'>!**')
-  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
+  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
   .setTimestamp()
   .setImage(wastedGifs[Math.floor(Math.random() * wastedGifs.length)])
   message.channel.send(embed);   
