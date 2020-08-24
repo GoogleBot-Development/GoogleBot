@@ -5,7 +5,7 @@ const userSchema = require('../../models/user.js')
 
 exports.run = async (client, message, args) => {
 
-  let user = message.mentions.members.first() 
+  let user = message.mentions.members.first() || client.users.cache.get(args[0])
 
   if(!user) {
   let embed1 = new Discord.MessageEmbed()
@@ -87,7 +87,7 @@ exports.run = async (client, message, args) => {
 exports.help = {
     name: "pay",
     description: "Pay someone in GoogleCoins!",
-    usage: "pay [@user] [# of coins]",
+    usage: "pay [@user] [amount]",
     category: "Economy"
   }
   
