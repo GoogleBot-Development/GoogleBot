@@ -21,14 +21,14 @@ exports.run = async (client, message, args) => {
     .setColor("RED")
     .setDescription(`:x: You've already collected your daily reward\n\nCollect it again in **${time.hours}h ${time.minutes}m ${time.seconds}s**.`)
     .setTimestamp()
-    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
     message.channel.send(timeEmbed)
   } else {
     let moneyEmbed = new Discord.MessageEmbed()
   .setColor("GREEN")
   .setDescription(`<a:checkmark:736406591275794583> You've collected your daily reward of **${amount}** GoogleCoins!`)
   .setTimestamp()
-  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
   message.channel.send(moneyEmbed)
   userSchema.updateOne({id: user.id}, {'money.wallet': res.money.wallet + amount, 'times.daily': Date.now()}, function(err, res) {if (err) console.log(err )})
   }
