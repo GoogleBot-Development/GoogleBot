@@ -20,7 +20,7 @@ exports.run = async (client, message, args) => {
     let timeEmbed = new Discord.MessageEmbed()
     .setColor("RED")
     .setDescription(`:x: You've already begged recently\n\nYou can beg again in **${time.seconds}s**. `)
-    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
     .setTimestamp()
     message.channel.send(timeEmbed)
   } else {
@@ -28,7 +28,7 @@ exports.run = async (client, message, args) => {
   .setColor("GREEN")
   .setDescription(`<a:checkmark:736406591275794583> You've begged and received **${amount}** GoogleCoins!`)
   .setTimestamp()
-  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
   message.channel.send(moneyEmbed)
   userSchema.updateOne({id: user.id}, {'money.wallet': res.money.wallet + amount, 'times.beg': Date.now()}, function(err, res) {if (err) console.log(err )})
   }
