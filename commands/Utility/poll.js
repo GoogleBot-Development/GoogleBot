@@ -8,8 +8,8 @@ exports.run = async (client, message, args) => {
   
       let pollEmbed = new Discord.MessageEmbed()
       .setColor("GREEN")
-      .setDescription(`**${query}**\n\nReact with the emojis to cast your vote. If there are no emojis, join the support server and make a ticket.`)
-      .setAuthor(`${message.author.username}'s poll:`, message.author.displayAvatarURL( { format: "png" } ))
+      .setDescription(`**${query}**\n\nReact with the emojis to cast your vote!`)
+      .setAuthor(`${message.author.username}'s poll:`, message.author.displayAvatarURL({dynamic: true}))
       .setTimestamp()
       .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
       let msg = await message.channel.send(pollEmbed);
