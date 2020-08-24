@@ -7,7 +7,7 @@ exports.run = (client, message, args) => {
     let greenEmbed = new Discord.MessageEmbed()
     .setColor("GREEN")
     .setDescription(`\`\`\`css\n${text}\n\`\`\``)
-    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
     .setTimestamp()
     message.channel.send(greenEmbed)
 }
