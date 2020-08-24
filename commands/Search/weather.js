@@ -20,7 +20,7 @@ exports.run = (client, message, args) => {
         var location = result[0].location;
 
         let weatherEmbed = new Discord.MessageEmbed()
-            .setAuthor(`${message.author.username}, it's ${current.skytext} weather in ${current.observationpoint}`, message.author.displayAvatarURL({format: "png"}))
+            .setAuthor(`${message.author.username}, it's ${current.skytext} weather in ${current.observationpoint}`, message.author.displayAvatarURL({dynamic: true}))
             .setColor("RANDOM")
             .setThumbnail(current.imageUrl)
             .addField('Timezone', `UTC${location.timezone}`, true)
@@ -39,7 +39,7 @@ exports.help = {
   name: "weather",
   description: "I can display the weather! Just give me a city or a town that I can scan.",
   usage: "weather [city/town]",
-  category: "Google"
+  category: "Search"
 }
 
 exports.aliases = []
