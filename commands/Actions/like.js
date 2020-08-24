@@ -15,13 +15,13 @@ exports.run = (client, message, args) => {
                 "https://cdn.discordapp.com/attachments/585624709312413696/585646348158763038/10.gif",
                 "https://media1.tenor.com/images/9b0d7ce98ac83c415ab15db119a07b9f/tenor.gif",
                 ]
-                let user = message.mentions.users.first();  
+                let user = message.mentions.users.first() || client.users.cache.get(args[0])
                 if(!user) return message.reply('you must mention someone to like!')
                 let embed = new Discord.MessageEmbed()
-                .setAuthor(`${message.author.username} liked someone!`, message.author.displayAvatarURL({format: "png"}))
+                .setAuthor(`${message.author.username} liked someone!`, message.author.displayAvatarURL({dynamic: true}))
                 .setColor("RANDOM")
                 .setDescription('**<@!'+ message.author.id +'> liked <@!'+ user.id +'>!**')
-                .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
+                .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
                 .setTimestamp()
                 .setImage(likeGifs[Math.floor(Math.random() * likeGifs.length)])
                 message.channel.send(embed); 
