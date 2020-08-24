@@ -15,10 +15,10 @@ exports.run = (client, message, args) => {
       .setColor("GREEN")
       .setTitle(`Google Search: ${query}`)
       .setURL(`https://www.google.com/search?safe=active&q=${search}`)
-      .setDescription('Click on the link above to view your Google Search Results! If you don\'t put anything, then it will not put anything.')
-      .setAuthor(`${message.author.username}'s Google Search Results`, message.author.displayAvatarURL( { format: "png" } ))
+      .setDescription('Click on the link above to view your Google Search Results!')
+      .setAuthor(`${message.author.username}'s Google Search Results`, message.author.displayAvatarURL({dynamic: true}))
       .setTimestamp()
-      .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+      .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
       message.channel.send(googleEmbed)
 }
 
@@ -26,7 +26,7 @@ exports.help = {
   name: "google",
   description: "Gives me something to search!",
   usage: "google [query]",
-  category: "Google"
+  category: "Search"
 }
 
 exports.aliases = ['search']
