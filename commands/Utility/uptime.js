@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
     let uptime = `${days}d ${hours}h ${minutes}m ${seconds}s`;
       let statsEmbed = new Discord.MessageEmbed()
       .setColor("RANDOM")
-      .setAuthor("GoogleBot Uptime", message.author.displayAvatarURL({format: "png"}))
+      .setAuthor("GoogleBot Uptime", message.author.displayAvatarURL({dynamic: true}))
       .addField("⏰ Uptime",uptime)
       .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
       .setTimestamp()
@@ -24,4 +24,4 @@ exports.help = {
   category: "Utility"
 }
 
-exports.aliases = []
+exports.aliases = ["up", "time"]
