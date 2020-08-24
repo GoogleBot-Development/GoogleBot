@@ -11,9 +11,9 @@ exports.run = (client, message, args) => {
       .setTitle(`YouTube Search: ${query}`)
       .setURL(`https://www.youtube.com/results?search_query=${search}`)
       .setDescription('Click on the link above to view your YouTube Search Results! If you don\'t put anything, then it will not put anything.')
-      .setAuthor(`${message.author.username}'s YouTube Search Results`, message.author.displayAvatarURL( { format: "png" } ))
+      .setAuthor(`${message.author.username}'s YouTube Search Results`, message.author.displayAvatarURL({dynamic: true}))
       .setTimestamp()
-      .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+      .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
       message.channel.send(youtubeEmbed)
 }
 
@@ -21,7 +21,7 @@ exports.help = {
   name: "youtube",
   description: "I will search on YouTube for your search.",
   usage: "youtube [query]",
-  category: "Google"
+  category: "Search"
 }
 
 exports.aliases = ["yt"]
