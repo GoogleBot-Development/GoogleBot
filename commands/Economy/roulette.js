@@ -98,7 +98,7 @@ return message.channel.send(moneymore)
 
         let moneyEmbed4 = new Discord.MessageEmbed()
         .setColor("RED")
-        .setDescription(`:x: You lost **${money}** GoogleCoins!\n\nMultiplier: 0x`)
+        .setDescription(`:x: You lost **${money}** GoogleCoins!`)
         .setTimestamp()
         .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
         message.channel.send(moneyEmbed4)
