@@ -43,7 +43,7 @@ module.exports.run = async (client, message, args) => {
 			.setColor("RANDOM")
 			.setDescription(`\`\`\`${text}\`\`\``)
 			.setTimestamp()
-			.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
+			.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
 			message.channel.send(morseEmbed) 
 }
 
