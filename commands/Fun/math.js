@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
                     mathEmbed.setTimestamp()
                     mathEmbed.addField(`Equation:`, `\`\`\`js\n${whatto}\`\`\``, true)
                     mathEmbed.addField(`Result:`, `\`\`\`js\n${result}\`\`\``, true);
-                    mathEmbed.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
+                    mathEmbed.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
                 message.channel.send(mathEmbed).catch(() => message.reply('that is an invalid expression!'));
             } catch (e) {
                 return message.reply('that is an invalid expression!')
