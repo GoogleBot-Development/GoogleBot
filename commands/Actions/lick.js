@@ -19,13 +19,13 @@ exports.run = (client, message, args) => {
               "https://i.pinimg.com/originals/6c/d0/68/6cd068418b74ab0808009e692a370d9e.gif",
               "https://media1.tenor.com/images/f0a7f04a7bc32029cc1273d06b93237f/tenor.gif",
               "https://i.gifer.com/3nkA.gif",]
-                let user = message.mentions.users.first();  
+                let user = message.mentions.users.first() || client.users.cache.get(args[0])  
                 if(!user) return message.reply('you must mention someone to lick!')
                 let embed = new Discord.MessageEmbed()
-                .setAuthor(`${message.author.username} licked someone!`, message.author.displayAvatarURL({format: "png"}))
+                .setAuthor(`${message.author.username} licked someone!`, message.author.displayAvatarURL({dynamic: true}))
                 .setColor("RANDOM")
                 .setDescription('**<@!'+ message.author.id +'> licked <@!'+ user.id +'>!**')
-                .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
+                .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
                 .setTimestamp()
                 .setImage(lickGifs[Math.floor(Math.random() * lickGifs.length)])
                 message.channel.send(embed); 
