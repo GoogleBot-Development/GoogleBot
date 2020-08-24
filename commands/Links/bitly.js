@@ -15,6 +15,7 @@ exports.run = (client, message, args) => {
         finalURL = bitlink.data.url;
         let embed = new Discord.MessageEmbed()
             .setColor("RANDOM")
+            .setAuthor("Bitly Link Shortener", message.author.displayAvatarURL({dynamic: true}))
             .setDescription(`<a:verified:739930427950891150> The link was successfully shortened!\n\n**Shorter Link:** ${finalURL}\n**Original Link:** ${inputURL}`)
             .setTimestamp()
             .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
