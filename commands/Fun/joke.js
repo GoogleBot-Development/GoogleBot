@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
       .setColor("RANDOM")
       .setDescription(joke)
       .setTimestamp()
-      .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+      .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
       message.channel.send(jokeEmbed)
     })
 }
