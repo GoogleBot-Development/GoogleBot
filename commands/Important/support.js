@@ -5,7 +5,7 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 exports.run = (client, message, args) => {
   let supportEmbed = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setDescription("Click [here](https://discord.gg/4a9pk8q) to join the support server!")
+    .setDescription("Click [here](https://discord.gg/y6Zxauk) to join the support server!")
     .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
     .setTimestamp()
     message.channel.send(supportEmbed)
