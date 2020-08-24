@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
 
    let ballembed = new Discord.MessageEmbed()
 
-   .setAuthor(`${message.author.username}'s 8ball:`, message.author.displayAvatarURL( { format: "png" } ))
+   .setAuthor(`${message.author.username}'s 8ball:`, message.author.displayAvatarURL({dynamic: true} ))
    .setColor("RANDOM")
    .addField("Question", question)
    .addField("Answer", replies[result])
