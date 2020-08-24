@@ -3,7 +3,7 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 
 
 exports.run = (client, message, args) => {
-  let user = message.mentions.users.first();  
+  let user = message.mentions.users.first() || client.users.cache.get(args[0])
     if(!user) return message.reply('you must mention someone to punch!')
     let punchGifs = ["https://media.giphy.com/media/3ylkxB18Ihc3u/giphy.gif",
                   "https://media.giphy.com/media/1Bgr0VaRnx3pCZbaJa/giphy.gif",
@@ -41,10 +41,10 @@ exports.run = (client, message, args) => {
                   "https://thumbs.gfycat.com/ConcernedVillainousAnemoneshrimp-small.gif",
                  ]
                  let embed = new Discord.MessageEmbed()
-  .setAuthor(`${message.author.username} punched someone!`, message.author.displayAvatarURL({format: "png"}))
+  .setAuthor(`${message.author.username} punched someone!`, message.author.displayAvatarURL({dynamic: true}))
   .setColor("RANDOM")
   .setDescription('**<@!'+ message.author.id +'> punched <@!'+ user.id +'>!**')
-  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
+  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
   .setTimestamp()
   .setImage(punchGifs[Math.floor(Math.random() * punchGifs.length)])
   message.channel.send(embed); 
