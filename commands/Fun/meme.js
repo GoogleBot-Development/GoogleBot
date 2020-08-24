@@ -1,32 +1,27 @@
-const Discord = require('discord.js')
-const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
-const snekfetch = require('snekfetch')
+const { MessageEmbed } = require("discord.js");
+const randomPuppy = require("random-puppy");
 
 exports.run = async (client, message, args) => {
-  try {
-      const { body } = await snekfetch
-          .get('https://www.reddit.com/r/memes.json')
-          .query({ limit: 800 });
-      const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.under_18);
-      if (!allowed.length) return message.channel.send('It seems we are out of fresh memes! Try again later.');
-      const randomnumber = Math.floor(Math.random() * allowed.length)
-      const embed = new Discord.MessageEmbed()
-      .setColor("RANDOM")
-      .setTitle(allowed[randomnumber].data.title)
-      .setURL(allowed[randomnumber].data.url)
-      .setImage(allowed[randomnumber].data.url)
-      .setFooter("👍 " + allowed[randomnumber].data.ups + " | 💬 " + allowed[randomnumber].data.num_comments + "")
-      message.channel.send(embed)
-    } catch (err) {
-      return console.log(err);
-    }
+
+    const subReddits = ["dankmeme", "meme", "me_irl", "memes", "wholesomememes", "historymemes", "comedyheaven", "AdviceAnimals"];
+        
+    const random = subReddits[Math.floor(Math.random() * subReddits.length)]
+
+        const img = await randomPuppy(random)
+
+        const embed = new MessageEmbed()
+            .setColor("RANDOM")
+            .setImage(img)
+            .setFooter(`Random meme from r/${random}`)
+
+        message.channel.send(embed);
 }
 
 exports.help = {
-  name: "meme",
-  description: "Gives you a meme",
-  usage: "meme",
-  category: "Fun"
-}
-
-exports.aliases = []
+    name: "meme",
+    description: "Get some random memes!",
+    usage: "meme",
+    category: "Fun"
+  }
+  
+  exports.aliases = []
