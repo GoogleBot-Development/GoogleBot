@@ -5,7 +5,7 @@ const userSchema = require('../../models/user.js')
 
 exports.run = async (client, message, args) => {
 
-  let user = message.mentions.members.first() || message.author;
+  let user = message.mentions.members.first() || client.users.cache.get(args[0]) || message.author;
   userSchema.findOne({id: user.id}, (err, res) => {
     if (!res) res = require('../../functions/start.js')(user);
 
