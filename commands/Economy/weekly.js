@@ -21,14 +21,14 @@ exports.run = async (client, message, args) => {
     .setColor("RED")
     .setDescription(`:x: You have already collected your weekly reward\n\nCollect it again in **${time.days}d ${time.hours}h ${time.minutes}m ${time.seconds}s**.`)
     .setTimestamp()
-    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+    .setFooter(`� ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
     message.channel.send(timeEmbed)
   } else {
     let moneyEmbed = new Discord.MessageEmbed()
   .setColor("#FFFFFF")
   .setDescription(`<a:checkmark:736406591275794583> You've collected your weekly reward of **${amount}** GoogleCoins!`)
   .setTimestamp()
-  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+  .setFooter(`� ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
   message.channel.send(moneyEmbed)
   userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + amount, 'times.weekly': Date.now()}, function(err, res) {if (err) console.log(err )})
 
@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
 
 exports.help = {
     name: "weekly",
-    description: "Gets your daily bonus of GoogleCoins!",
+    description: "Gets your weekly bonus of GoogleCoins!",
     usage: "weekly",
     category: "Economy"
   }
