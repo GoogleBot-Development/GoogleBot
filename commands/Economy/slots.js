@@ -10,8 +10,16 @@ exports.run = async (client, message, args) => {
     if (!res) res = require('../../functions/start.js')(user);
 
     let moneydb = res.money.wallet
-    let money = parseInt(args[0]);
+    let money = args[0]
     let win = false;
+
+    let moneyhelp = new Discord.MessageEmbed()
+    .setColor("RED")
+    .setDescription(`:x: Specify an amount!`)
+    .setTimestamp()
+    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+
+    if (!money) return message.channel.send(moneyhelp);
 
     let nanEmbed = new Discord.MessageEmbed()
   .setColor("RED")
@@ -25,14 +33,6 @@ exports.run = async (client, message, args) => {
     .setDescription(`:x: You are betting more than you have`)
     .setTimestamp()
     .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
-
-    let moneyhelp = new Discord.MessageEmbed()
-    .setColor("RED")
-    .setDescription(`:x: Specify an amount`)
-    .setTimestamp()
-    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
-
-    if (!money) return message.channel.send(moneyhelp);
     if (money > moneydb) return message.channel.send(moneymore);
 
     let number = []
