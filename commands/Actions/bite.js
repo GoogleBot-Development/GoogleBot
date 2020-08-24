@@ -19,10 +19,10 @@ exports.run = (client, message, args) => {
                 "https://66.media.tumblr.com/903ab7ed344fc2dc50ec6b89fcdf278b/tumblr_oqb558oc1G1ujwg5zo1_500.gif",
             "https://image.myanimelist.net/ui/4Uqv6c4qu88OmaYh1hBUOfARoB4-wUoSq7QG4TSsvkaO2-NsvLJ-zHHTMUyE7Vz6"
                 ]
-                let user = message.mentions.users.first();  
+                let user = message.mentions.users.first() || client.users.cache.get(args[0]) 
                 if(!user) return message.reply('you must mention someone to bite!')
                 let embed = new Discord.MessageEmbed()
-                .setAuthor(`${message.author.username} bited someone!`, message.author.displayAvatarURL({format: "png"}))
+                .setAuthor(`${message.author.username} bited someone!`, message.author.displayAvatarURL({dynamic: true}))
                 .setColor("RANDOM")
                 .setDescription('**<@!'+ message.author.id +'> bited <@!'+ user.id +'>!**')
                 .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
