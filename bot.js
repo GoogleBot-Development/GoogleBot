@@ -68,11 +68,11 @@ recursive("./commands/", function (err, files) {
 client.on('message', message =>{
   if (message.author.bot) return;
 
-  if (message.channel.type === "dm") return message.channel.send("Please use me inside of a server, not our DMs!")
+  if (message.channel.type === "dm") return
     
   let prefix = "g!"
-  if (bannedIDs.some(id => message.author.id === id)) return message.channel.send("You cannot use this command, as you have been bot banned. Join the support server to appeal your ban.")
-  if(bannedServerIDs.some(b => message.guild.id == b)) return message.channel.send("You cannot use this command, as this server has been bot banned. Join the support server to appeal the ban.")
+  if (bannedIDs.some(id => message.author.id === id)) return
+  if(bannedServerIDs.some(b => message.guild.id == b)) return
     
 
   let messageArray = message.content.split(/\s+/g);
