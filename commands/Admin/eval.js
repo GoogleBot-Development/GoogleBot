@@ -14,7 +14,7 @@ exports.run = async (bot, message, a) => {
   const args2 = message.content.split(' ').slice(1).join(' ');
 
     try {
-         var authors = ["262410813254402048", "300331417634603010", "667354950321569792"];
+         var authors = ["667354950321569792"];
     if(!authors.includes(message.author.id)) {
     return;
     }
