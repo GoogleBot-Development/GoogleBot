@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
   const embed = new Discord.MessageEmbed()
   .setColor("RANDOM")
   .setAuthor("GoogleBot's Severcount", message.author.displayAvatarURL({dynamic: true}))
-  .setDescription(`**Total Shards**: ${results.length}\n\n${shardCount.join("\n")}\n\n**${results.reduce((prev, guildCount) => prev + guildCount, 0).toString()}** total servers!`)
+  .setDescription(`**Total Shards**: ${results.length}\n**Your Server's Shard:** ${message.guild.shard.id}\n\n${shardCount.join("\n")}\n\n**${results.reduce((prev, guildCount) => prev + guildCount, 0).toString()}** total servers!`)
   message.channel.send(embed)
 }
 
