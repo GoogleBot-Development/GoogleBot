@@ -10,7 +10,7 @@ module.exports = (client) => {
         let links = [`https://www.twitch.tv/Jeydin21`, "https://www.twitch.tv/Jeydin21"];
         let statusLinks = links[Math.floor(Math.random()*links.length)];
 
-        let statuses = ["g!help | g!invite", `g!help | ${version}`, "to your server!", `g!help | Shard ${fish}`]
+        let statuses = ["g!help | g!invite", `g!help | ${version}`, `g!help | Shard:${fish}`]
         let status = statuses[Math.floor(Math.random()*statuses.length)];
   
         client.user.setActivity(status, {
