@@ -102,8 +102,9 @@ client.on('message', message =>{
 })
 
 client.on('message', message => {
-  if(message.content === `<@!721215949088358420>`)
-  message.channel.send(`Hey there! I am **${message.client.user.tag}**! My prefix is \`g!\`.To get started, just type \`g!help\`!`)
+  if(message.content.includes(`<@!721215949088358420>`)){
+  message.channel.send(`Hey there! I am **${message.client.user.tag}**! My prefix is \`g!\`. To get started, just type \`g!help\`!`)
+  }
 })
 
 client.on('guildCreate', message => {
