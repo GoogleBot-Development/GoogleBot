@@ -7,10 +7,11 @@ module.exports = (client) => {
 
     setInterval(function() {
       let fish = client.shard.ids[0] + 1
+      let total = client.shard.count
         let links = [`https://www.twitch.tv/Jeydin21`, "https://www.twitch.tv/Jeydin21"];
         let statusLinks = links[Math.floor(Math.random()*links.length)];
 
-        let statuses = ["g!help | g!invite", `g!help | ${version}`, `g!help | Shard: ${fish}`]
+        let statuses = ["g!help | g!invite", `g!help | ${version}`, `g!help | Shard: ${fish}/${total}`]
         let status = statuses[Math.floor(Math.random()*statuses.length)];
   
         client.user.setActivity(status, {
