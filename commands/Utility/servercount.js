@@ -6,10 +6,11 @@ exports.run = async (client, message, args) => {
 
   let shardCount = []
   results.forEach((result, r) => shardCount.push(`**Shard ${r + 1}**: ${result.toString()} Servers`))
+  let fish = message.guild.shard.id + 1
   const embed = new Discord.MessageEmbed()
   .setColor("RANDOM")
   .setAuthor("GoogleBot's Severcount", message.author.displayAvatarURL({dynamic: true}))
-  .setDescription(`**Total Shards**: ${results.length}\n\n${shardCount.join("\n")}\n\n**${results.reduce((prev, guildCount) => prev + guildCount, 0).toString()}** total servers!`)
+  .setDescription(`**Total Shards**: ${results.length}\n**Your Shard ID:** ${fish}\n\n${shardCount.join("\n")}\n\n**${results.reduce((prev, guildCount) => prev + guildCount, 0).toString()}** total servers!`)
   message.channel.send(embed)
 }
 
