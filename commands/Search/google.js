@@ -14,7 +14,7 @@ exports.run = (client, message, args) => {
   let googleEmbed = new Discord.MessageEmbed()
       .setColor("GREEN")
       .setTitle(`Google Search: ${query}`)
-      .setURL(`https://www.google.com/search?safe=active&q=${search}`)
+      .setURL(`https://www.google.com/search?q=${search}`)
       .setDescription('Click on the link above to view your Google Search Results!')
       .setAuthor(`${message.author.username}'s Google Search Results`, message.author.displayAvatarURL({dynamic: true}))
       .setTimestamp()
