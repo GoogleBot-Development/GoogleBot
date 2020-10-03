@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
 let linksEmbed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor("GoogleBot Links", message.author.displayAvatarURL({dynamic: true}))
-    .setDescription("**[Bot Invite Link](https://discord.com/oauth2/authorize/?permissions=392256&scope=bot&client_id=721215949088358420)**\n\n**[Support Server Invite Link](https://discord.gg/y6Zxauk)**\n\n**[Discord Bot List](https://top.gg/bot/721215949088358420)**\n\n[Bot Updates](https://googlebot-updates.jeydin21.repl.co/)**\n\n[Our Patreon](https://www.patreon.com/discord_googlebot?fan_landing=true)**")
+    .setDescription("**[Bot Invite Link](https://discord.com/oauth2/authorize/?permissions=392256&scope=bot&client_id=721215949088358420)**\n\n**[Support Server Invite Link](https://discord.gg/y6Zxauk)**\n\n**[Discord Bot List](https://top.gg/bot/721215949088358420)**\n\n**[Bot Updates](https://googlebot-updates.jeydin21.repl.co/)**\n\n**[Our Patreon](https://www.patreon.com/discord_googlebot?fan_landing=true)**")
     .setTimestamp()
     .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
     message.channel.send(linksEmbed)
