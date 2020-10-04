@@ -16,9 +16,9 @@ exports.run = async (client, message, args) => {
   if (args[0] == 'all') {
     let money = res.money.wallet
 
-    userSchema.updateOne({id: user.id}, {'money.wallet': 0, 'money.bank': money}, function(err, res) {if (err) console.log(err )})
+    userSchema.updateOne({id: user.id}, {'money.wallet': 0, 'money.bank': money + member2}, function(err, res) {if (err) console.log(err )})
 
-  let embed5 = new Discord.MessageEmbed()
+  let embed5 = new Discord.MessageEmbed() 
   .setColor("GREEN")
   .setDescription(`<a:checkmark:736406591275794583> You have deposited all (**${money}**) your GoogleCoins into your bank!`)
   .setTimestamp()
