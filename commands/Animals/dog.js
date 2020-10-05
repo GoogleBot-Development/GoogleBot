@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const randomPuppy = require("random-puppy");
 
 exports.run = async (client, message, args) => {
+    let msg = await message.channel.send('Generating image...')
 
     const subReddits = ["dogpictures"];
         
@@ -14,7 +15,7 @@ exports.run = async (client, message, args) => {
             .setImage(img)
             .setFooter(`Random dog from r/${random}`)
 
-        message.channel.send(embed);
+        msg.edit(" ", embed);
 }
 
 exports.help = {
