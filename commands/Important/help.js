@@ -4,7 +4,7 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 
 exports.run = (client, message, args) => {
  args = args.join(" ")
-   let fun = [], actions = [], search = [], important = [], utility = [], links = [], economy = []
+   let fun = [], actions = [], search = [], important = [], utility = [], links = [], economy = [], animals = []
 
   if (!args) {
    
@@ -20,7 +20,8 @@ recursive("./commands/", function (err, files) {
     if (f.startsWith("commands/Actions")) actions.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Important")) important.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Links")) links.push(`\`${props.help.name}\``)
-   if (f.startsWith("commands/Economy")) economy.push(`\`${props.help.name}\``)
+    if (f.startsWith("commands/Economy")) economy.push(`\`${props.help.name}\``)
+    if (f.startsWith("commands/Animals")) animals.push(`\`${props.help.name}\``)
 })
 
   const embed = new Discord.MessageEmbed()
@@ -34,6 +35,7 @@ recursive("./commands/", function (err, files) {
   .addField(`:punch:  Action Commands - (${actions.length})  :punch:`, actions.join(", "))
   .addField(`:link:  Link Shorteners - (${links.length})  :link:`, links.join(", "))
   .addField(`:tools:  Utility Commands - (${utility.length})  :tools:`, utility.join(", "))
+  .addField(`:cat:  Animal Commands - (${animals.length})  :cat:`, animals.join(", "))
   .setTimestamp()
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
   message.channel.send(embed)
