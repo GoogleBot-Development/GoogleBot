@@ -19,7 +19,7 @@ if (emojis.length > 20) emojis = ["This server has too many emojis for me to dis
     "brazil": ":flag_br: Brazil",
     "europe": ":flag_eu: Europe",
     "singapore": ":flag_sg: Singapore",
-    "us-central": ":flag_us U.S. Central",
+    "us-central": ":flag_us: U.S. Central",
     "southafrica": ":flag_za: South Africa",
     "sydney": ":flag_au: Sydney",
     "us-east": ":flag_us: U.S. East",
