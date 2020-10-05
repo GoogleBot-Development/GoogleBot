@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const randomPuppy = require("random-puppy");
 
 exports.run = async (client, message, args) => {
+    let msg = await message.channel.send('Generating image...')
 
     const subReddits = ["shiba"];
         
@@ -12,16 +13,16 @@ exports.run = async (client, message, args) => {
         const embed = new MessageEmbed()
             .setColor("RANDOM")
             .setImage(img)
-            .setFooter(`Random shiba from r/${random}`)
+            .setFooter(`Random shibe from r/${random}`)
 
-        message.channel.send(embed);
+        msg.edit(" ", embed);
 }
 
 exports.help = {
-    name: "shiba",
-    description: "Get some random shibas!",
-    usage: "shiba",
+    name: "shibe",
+    description: "Get some random shibe!",
+    usage: "shibe",
     category: "Animals"
   }
   
-  exports.aliases = []
+  exports.aliases = ["shiba"]
