@@ -129,6 +129,23 @@ client.on('guildCreate', message => {
     let webhook = new Discord.WebhookClient("739962361548505239", "Bhe017bH-H_7TcgBGkYvJTl__0ENLYdrk2UldwJax8XMC0dp4wVs0neKlGLqlmv5WZM6")
     
     webhook.send(joinEmbed)
+	  
+	let defaultChannel = "";
+guild.channels.cache.forEach((channel) => {
+  if(channel.type == "text" && defaultChannel == "") {
+    if(channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
+      defaultChannel = channel;
+    }
+  }
+})
+let channelEmbed = new Discord.MessageEmbed()
+.setColor("GREEN")
+.setTitle("Thank You For Inviting Me To Your Server!")
+.setAuthor("GoogleBot | Discord's #1 Google bot", client.user.displayAvatarURL({format: "png"}))
+.setDescription("Hello! I'm GoogleBot, Discord's #1 Google bot. To get started, simply use `g!help`, and the full commands list will be available at your fingertips. Thank you for inviting me to your server!")
+.setTimestamp()
+.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format : "png"} ))
+defaultChannel.send(channelEmbed)  
   }).catch(console.error)
 })
   
