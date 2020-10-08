@@ -11,7 +11,7 @@ module.exports = (client) => {
         let links = [`https://www.twitch.tv/Jeydin21`, "https://www.twitch.tv/Jeydin21"];
         let statusLinks = links[Math.floor(Math.random()*links.length)];
 
-        let statuses = [`g!help | Shard ${fish}/${total}`]
+        let statuses = [`g!help | Shard ${fish}/${total}`, "🎉 HAPPY 4000 🎉"]
         let status = statuses[Math.floor(Math.random()*statuses.length)];
   
         client.user.setActivity(status, {
