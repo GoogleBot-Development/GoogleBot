@@ -22,9 +22,9 @@ exports.run = (client, message, args, funcs) => {
 };
 
 exports.help = {
-    name: "ship",
-    description: "Ships two things together!",
-    usage: "ship [object 1] [object 2]",
+    name: "love",
+    description: "Sees how much someone likes the other!",
+    usage: "love [person 1] [person 2]",
     category: "Fun"
   }
   
