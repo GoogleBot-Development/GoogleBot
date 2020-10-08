@@ -10,8 +10,8 @@ exports.run = (client, message, args, funcs) => {
     let percentage = Math.floor(Math.random() * 100);
     let shipEmbed = new Discord.MessageEmbed()
       shipEmbed.setTimestamp()
-      shipEmbed.setTitle(`Ship`)
-      shipEmbed.setDescription(`I ship \`${first}\` and \`${second}\`, \`${percentage}\`%!`)
+      shipEmbed.setAuthor(":heart: Love Calculator :heart:", message.author.displayAvatarURL({dynamic: true)
+      shipEmbed.setDescription(`:heart: \`${first}\` loves \`${second}\`, \`${percentage}\`%! :heart:`)
       shipEmbed.setColor("RANDOM");
       shipEmbed.setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
     message.channel.send(shipEmbed);
@@ -28,4 +28,4 @@ exports.help = {
     category: "Fun"
   }
   
-  exports.aliases = ["combine", "rate"]
+  exports.aliases = ["combine", "rate", "ship"]
