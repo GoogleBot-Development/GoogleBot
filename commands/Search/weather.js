@@ -4,7 +4,7 @@ const weather = require("weather-js");
 
 exports.run = (client, message, args) => {
   if (!args[0]) return message.reply("please give me a city to find the weather of!");
-  if(!args[1] || args[1] !== "C" || args[1] !== "F") return message.reply("please input your tempterature unit! Options are: `F` and `C`.")
+  if(args[1] !== "C" || args[1] !== "F") return message.reply("please input your tempterature unit! Options are: `F` and `C`.")
   let unit = [""]
   if (args[1] === "F") unit = ["Fahrenheit"]
   if(args[1] === "C") unit = ["Celsius"]
