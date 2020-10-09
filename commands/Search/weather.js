@@ -3,8 +3,12 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 const weather = require("weather-js");
 
 exports.run = (client, message, args) => {
-  if (!args[0]) return message.reply("Please give me a city to find the weather of!");
-  weather.find({ search: args.join(' '), degreeType: 'F' }, function (err, result) { 
+  if (!args[0]) return message.reply("please give me a city to find the weather of!");
+  if(!args[1] || args[1] !== "C" || args[1] !== "F") return message.reply("please input your tempterature unit! Options are: `F` and `C`.")
+  let unit = [""]
+  if (args[1] === "F") unit = ["Fahrenheit"]
+  if(args[1] === "C") unit = ["Celsius"]
+  weather.find({ search: args.join(' '), degreeType: args[1] }, function (err, result) { 
         if (err) console.log('Weather CMD error: ' + err);
         if (result === undefined || result.length === 0) {
           let errorEmbed = new Discord.MessageEmbed()
@@ -24,7 +28,7 @@ exports.run = (client, message, args) => {
             .setColor("RANDOM")
             .setThumbnail(current.imageUrl)
             .addField('Timezone', `UTC${location.timezone}`, true)
-            .addField('Temperature', `${current.temperature} Degrees`, true)
+            .addField('Temperature', `${current.temperature} Degrees ${unit}`, true)
             .addField('Degree Type', location.degreetype, true)
             .addField('Feels Like', `${current.feelslike} Degrees`, true)
             .addField('Winds', current.winddisplay, true)
