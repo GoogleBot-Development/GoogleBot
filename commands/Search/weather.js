@@ -3,12 +3,9 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 const weather = require("weather-js");
 
 exports.run = (client, message, args) => {
-  if (!args[0]) return message.reply("please give me a city to find the weather of!");
-  if(args[1] === "C" || args[1] === "F") return message.reply("please input your tempterature unit! Options are: `F` and `C`.")
-  let unit = [""]
-  if (args[1] === "F") unit = ["Fahrenheit"]
-  if(args[1] === "C") unit = ["Celsius"]
-  weather.find({ search: args.join(' '), degreeType: args[1] }, function (err, result) { 
+  if (!args[0]) return message.reply("please give me a unit to get the temperature in! Options are `F` and `C`!")
+  if (!args[1]) return message.reply("please give me a location to get the weather of!")
+  weather.find({ search: args.slice(1).join(' '), degreeType: args[0] }, function (err, result) { 
         if (err) console.log('Weather CMD error: ' + err);
         if (result === undefined || result.length === 0) {
           let errorEmbed = new Discord.MessageEmbed()
