@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
             .setColor("RANDOM")
             .setThumbnail(current.imageUrl)
             .addField('Timezone', `UTC${location.timezone}`, true)
-            .addField('Temperature', `${current.temperature} Degrees ${unit}`, true)
+            .addField('Temperature', `${current.temperature} Degrees`, true)
             .addField('Degree Type', location.degreetype, true)
             .addField('Feels Like', `${current.feelslike} Degrees`, true)
             .addField('Winds', current.winddisplay, true)
