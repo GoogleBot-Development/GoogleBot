@@ -94,10 +94,6 @@ client.on('message', message =>{
   }
   
   function ranCommand(c) {
-    const log = client.channels.cache.get("737634243856957440")
-    const webhook = new Discord.WebhookClient("737634618945044521", "VYbbEr87UpsKZNvZgHSbiyilpd718gz3fUUX7j3s-1AHjzrI2MEYR0xSMb0HwT50vmcK")
-    
-    webhook.send(new Discord.MessageEmbed().setColor("RANDOM").setTitle("Command Ran").setDescription(`**User** - ${message.author.tag}\n**User ID** - ${message.author.id}\n\n**Server Name** - ${message.guild.name}\n**Server ID** - ${message.guild.id}\n\n**Command Ran** - g!${c.help.name}`).setThumbnail(message.author.displayAvatarURL()))
     console.log(`[Shard #${shard}] g!${c.help.name} ran by ${message.author.tag} (${message.author.id}) from ${message.guild.name} (${message.guild.id})`)
   }
     
@@ -131,7 +127,7 @@ client.on('guildCreate', message => {
     let webhook = new Discord.WebhookClient("739962361548505239", "Bhe017bH-H_7TcgBGkYvJTl__0ENLYdrk2UldwJax8XMC0dp4wVs0neKlGLqlmv5WZM6")
     
     webhook.send(joinEmbed)
-    console.log(`[Shard #${shard}] I just joined ${guild.name} (${guild.id}) which is owned by ${guild.owner.tag} (${guild.owner.id}). I am now in ${chicken} servers!`)
+    console.log(`[Shard #${shard}] I just joined ${guild.name} (${guild.id}) which is owned by ${message.guild.owner.tag} (${guild.owner.id}). I am now in ${chicken} servers!`)
 	  
 	let defaultChannel = "";
 guild.channels.cache.forEach((channel) => {
@@ -172,7 +168,7 @@ client.on('guildDelete', message => {
     let webhook = new Discord.WebhookClient("739965365248852029", "MUVBrXRpxfb9mhohMsUmKcWLTodwghqnSEqPNxnvsJwzA5qFEQyGhju3oEQ1NYfnXDVe")
     
     webhook.send(leaveEmbed)
-    console.log(`[Shard #${shard}] I just left ${guild.name} (${guild.id}) which was owned by ${guild.owner.tag} (${guild.owner.id}). I am now in ${chicken} servers!`)
+    console.log(`[Shard #${shard}] I just left ${guild.name} (${guild.id}) which was owned by ${message.guild.owner.tag} (${guild.owner.id}). I am now in ${chicken} servers!`)
   }).catch(console.error)
 })
  
