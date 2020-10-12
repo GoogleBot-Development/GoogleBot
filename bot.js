@@ -127,7 +127,7 @@ client.on('guildCreate', message => {
     let webhook = new Discord.WebhookClient("739962361548505239", "Bhe017bH-H_7TcgBGkYvJTl__0ENLYdrk2UldwJax8XMC0dp4wVs0neKlGLqlmv5WZM6")
     
     webhook.send(joinEmbed)
-    console.log(`[Shard #${shard}] I just joined ${guild.name} (${guild.id}) which is owned by ${message.guild.owner.tag} (${guild.owner.id}). I am now in ${chicken} servers!`)
+    console.log(`[Shard #${shard}] I just joined ${guild.name} (${guild.id}) which is owned by ${guild.owner.username}#${guild.owner.discrimnator} (${guild.owner.id}). I am now in ${chicken} servers!`)
 	  
 	let defaultChannel = "";
 guild.channels.cache.forEach((channel) => {
@@ -168,7 +168,7 @@ client.on('guildDelete', message => {
     let webhook = new Discord.WebhookClient("739965365248852029", "MUVBrXRpxfb9mhohMsUmKcWLTodwghqnSEqPNxnvsJwzA5qFEQyGhju3oEQ1NYfnXDVe")
     
     webhook.send(leaveEmbed)
-    console.log(`[Shard #${shard}] I just left ${guild.name} (${guild.id}) which was owned by ${message.guild.owner.tag} (${guild.owner.id}). I am now in ${chicken} servers!`)
+    console.log(`[Shard #${shard}] I just left ${guild.name} (${guild.id}) which was owned by ${guild.owner.username}#${guild.owner.discrimnator} (${guild.owner.id}). I am now in ${chicken} servers!`)
   }).catch(console.error)
 })
  
