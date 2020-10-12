@@ -5,7 +5,7 @@ const client = new Discord.Client();
 const snekfetch = require('snekfetch');
 const DBL = require("dblapi.js");
 const dbl = new DBL(`${dblToken}`, client);
-const shard = client.shard.id + 1
+const shard = client.shard.ids[0] + 1
 
 client.commands = new Discord.Collection()
 client.aliases = new Discord.Collection()
