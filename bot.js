@@ -107,7 +107,6 @@ client.on('message', message => {
 
 client.on('guildCreate', message => {
   let guild = message
-  let owner = message.guild.owner
   client.shard.fetchClientValues('guilds.cache.size')
   .then(results => {
     let chicken = (`${results.reduce((prev, guildCount) => prev + guildCount, 0)}`)
@@ -151,7 +150,6 @@ defaultChannel.send(channelEmbed)
   
 client.on('guildDelete', message => {
   let guild = message
-  let owner = message.guild.owner
   client.shard.fetchClientValues('guilds.cache.size')
   .then(results => {
     let chicken = (`${results.reduce((prev, guildCount) => prev + guildCount, 0)}`)
