@@ -8,7 +8,7 @@
     "ownerID": "667354950321569792",
     "mongo": "mongodb+srv://Jeydin21:GoogleBot123@googlebot.unb8h.azure.mongodb.net/GoogleBot?retryWrites=true&w=majority",
     "ownerUsername": "Jeydin21",
-    "bannedIDs": ["743234300719267871", "443166863996878878", "486689069087064064"],
-    "bannedServerIDs": [""],
+    "bannedIDs": ["743234300719267871", "443166863996878878", "486689069087064064", "729300910869708820"],
+    "bannedServerIDs": ["755304042489446501"],
     "dblToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyMTIxNTk0OTA4ODM1ODQyMCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTk2ODQxMzQ2fQ.exZB_prnPxlIjERL1ye4QG7k7SypUvrKf3pxMZAWuWk"
  }
