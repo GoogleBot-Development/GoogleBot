@@ -17,6 +17,7 @@ exports.run = async (client, message, args) => {
       const embed = new Discord.MessageEmbed()
         .setAuthor('Global Coronavirus Statistics', message.author.displayAvatarURL({dynamic: true}))
         .addField('Confirmed Cases', `**${totalStats.cases.toLocaleString()}**`, true)
+        .setThumbnail("https://cdn.discordapp.com/icons/702217335716446268/a_3cb7636b6976f63efe38fd438dbcd862.gif")
         .addField('Today\'s Cases', `+${totalStats.todayCases.toLocaleString()}`, true)
         .addField('Today\'s Deaths', `+${totalStats.todayDeaths.toLocaleString()}`, true)
         .addField('Active Cases', `${totalStats.active.toLocaleString()} (${((totalStats.active / totalStats.cases) * 100).toFixed(2)}%)`, true)
