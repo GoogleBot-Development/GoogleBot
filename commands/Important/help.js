@@ -4,7 +4,7 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 
 exports.run = (client, message, args) => {
  args = args.join(" ")
-   let fun = [], actions = [], search = [], important = [], utility = [], links = [], economy = [], animals = []
+   let fun = [], actions = [], search = [], important = [], utility = [], links = [], economy = [], animals = [], covid = []
 
   if (!args) {
    
@@ -22,17 +22,19 @@ recursive("./commands/", function (err, files) {
     if (f.startsWith("commands/Links")) links.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Economy")) economy.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Animals")) animals.push(`\`${props.help.name}\``)
+    if (f.startsWith("commands/Coronavirus")) covid.push(`\`${props.help.name}\``)
 })
 
   const embed = new Discord.MessageEmbed()
   .setColor("RANDOM")
   .setAuthor("GoogleBot Command List", message.author.displayAvatarURL({dynamic: true}))
   .setDescription("Hello! This is my command list of all the commands that I have to offer you! Need help? Join our support server by clicking [here](https://discord.gg/y6Zxauk).\n\nDo `g!help [command name]` to see more information on a command!\n")
+  .addField(`:pushpin:  Important Commands - (${important.length})  :pushpin:`, important.join(", "))
   .addField(`:punch:  Action Commands - (${actions.length})  :punch:`, actions.join(", "))
   .addField(`:cat:  Animal Commands - (${animals.length})  :cat:`, animals.join(", "))
+  .addField(`:thermometer:  COVID-19 Commands - (${covid.length})  :thermometer:`, covid.join(", "))
   .addField(`:moneybag:  Economy Commands - (${economy.length})  :moneybag:`, economy.join(", "))
   .addField(`:8ball:  Fun Commands - (${fun.length})  :8ball:`, fun.join(", "))
-  .addField(`:pushpin:  Important Commands - (${important.length})  :pushpin:`, important.join(", "))
   .addField(`:link:  Link Shorteners - (${links.length})  :link:`, links.join(", "))
   .addField(`:mag:  Search Commands - (${search.length})  :mag:`, search.join(", "))
   .addField(`:tools:  Utility Commands - (${utility.length})  :tools:`, utility.join(", "))
@@ -72,7 +74,5 @@ exports.help = {
   usage: "help <command name>",
   category: "Utility"
 }
-
-
 
 exports.aliases = ["cmds", "commands"]
