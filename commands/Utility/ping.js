@@ -1,9 +1,8 @@
 const Discord = require('discord.js')
 const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
 
-exports.run = (client, message, args) => {
-  message.channel.send("Getting the ping...").then(msg => {
-    msg.delete()
+exports.run = async (client, message, args) => {
+  let msg = await message.channel.send("Getting the ping...")
       var ping = msg.createdTimestamp - message.createdTimestamp + "ms";
 let pingEmbed = new Discord.MessageEmbed()
      .setColor("RANDOM")
@@ -13,7 +12,7 @@ let pingEmbed = new Discord.MessageEmbed()
      .addField("Message Ping:", `:hourglass_flowing_sand: ${ping}`)
      .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
      .setTimestamp()
-     message.channel.send(pingEmbed)
+     msg.edit(' ', pingEmbed)
 });
 }
 
