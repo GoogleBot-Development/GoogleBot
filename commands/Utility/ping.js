@@ -13,7 +13,6 @@ let pingEmbed = new Discord.MessageEmbed()
      .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
      .setTimestamp()
      msg.edit(' ', pingEmbed)
-});
 }
 
 exports.help = {
