@@ -1,4 +1,6 @@
-const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("./config.json");
+const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, dblToken } = require("./config.json");
+var userban = require('./userbans.json')
+var serverban = require("./serverbans.json")
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
@@ -72,8 +74,8 @@ client.on('message', message =>{
   if (message.channel.type === "dm") return
     
   let prefix = "g!"
-  if (bannedIDs.some(id => message.author.id === id)) return
-  if(bannedServerIDs.some(b => message.guild.id == b)) return
+  if (userban[message.author.id]) return  
+  if (serverban[message.guild.id]) return
     
 
   let messageArray = message.content.split(/\s+/g);
