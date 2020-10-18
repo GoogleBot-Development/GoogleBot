@@ -3,7 +3,7 @@ var serverban = require("../../serverbans.json")
 
 exports.run = async (client, message, args) => {
   if(message.author.id !== "667354950321569792") return
-  			let server = client.shard.broadcastEval(`client.guilds.cache.get(args[0])`)
+  			let server = client.shard.broadcastEval(`bot.guilds.cache.get(args[0])`)
         let reason = args.slice(1).join(" ")
         if(!server) return message.channel.send("You must put a server to add to the Server Bot Ban Database!")
         if(!reason) return message.channel.send("You must give a reason!")
