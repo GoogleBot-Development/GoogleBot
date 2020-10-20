@@ -3,8 +3,8 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 const weather = require("weather-js");
 
 exports.run = (client, message, args) => {
-  if (!args[0]) return message.reply("please give me a unit to get the temperature in! Options are `F` and `C`!")
-  if (!args[1]) return message.reply("please give me a location to get the weather of!")
+  if (!args[0]) return message.reply("Incorrect usage! `g!weather [C/F] [city/town]` is the correct usage.")
+  if (!args[1]) return message.channel.send("Incorrect usage! `g!weather [C/F] [city/town]` is the correct usage.")
   weather.find({ search: args.slice(1).join(' '), degreeType: args[0] }, function (err, result) { 
         if (err) console.log('Weather CMD error: ' + err);
         if (result === undefined || result.length === 0) {
