@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
   let newEmbed = new Discord.MessageEmbed()
   .setAuthor("GoogleBot Updates", message.author.displayAvatarURL({dynamic: true}))
   .setColor("RANDOM")
-  .setDescription("Click [here](https://googlebot-updates.jeydin21.repl.co/) to see my updates page!")
+  .setDescription("Click [here](https://googlebot-updates.glitch.me) to see my updates page!")
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( {format: "png"} ))
   .setTimestamp()
   message.channel.send(newEmbed) 
