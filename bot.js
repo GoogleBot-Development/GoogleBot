@@ -126,7 +126,7 @@ client.on('guildCreate', message => {
   .setTimestamp()
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format : "png"} ))
   let log = client.channels.cache.get("728042499041525792")
-    let webhook = new Discord.WebhookClient("739962361548505239", "Bhe017bH-H_7TcgBGkYvJTl__0ENLYdrk2UldwJax8XMC0dp4wVs0neKlGLqlmv5WZM6")
+    let webhook = new Discord.WebhookClient("761032176862101534", "yr507nnTV-UdsgJraFVHP_wSimGSEFP4t0yWq0uIebUHkN_hER5ULcSdUgxOf1rU7Al1")
     
     webhook.send(joinEmbed)
     console.log(`[Shard #${shard}] I just joined ${guild.name} (${guild.id}). I am now in ${chicken} servers!`)
@@ -167,7 +167,7 @@ client.on('guildDelete', message => {
   .setTimestamp()
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format : "png"} ))
   let log = client.channels.cache.get("72806901501185229")
-    let webhook = new Discord.WebhookClient("739965365248852029", "MUVBrXRpxfb9mhohMsUmKcWLTodwghqnSEqPNxnvsJwzA5qFEQyGhju3oEQ1NYfnXDVe")
+    let webhook = new Discord.WebhookClient("761032468807155732", "_XKK_R9TPcOifMgc1YieIV1Wkosr_zVsAf5K0Zz2Osojrt31MSOpzDQYT0ZLO_4ZyuwQ")
     
     webhook.send(leaveEmbed)
     console.log(`[Shard #${shard}] I just left ${guild.name} (${guild.id}). I am now in ${chicken} servers!`)
