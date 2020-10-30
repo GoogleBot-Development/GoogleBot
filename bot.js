@@ -96,7 +96,7 @@ client.on('message', message =>{
   }
   
   function ranCommand(c) {
-    console.log(`[Shard #${shard}] g!${c.help.name} ran by ${message.author.tag} (${message.author.id}) from ${message.guild.name} (${message.guild.id})`)
+    console.log(`[Shard #${shard}] g!${c.help.name} ran by: ${message.author.tag} (${message.author.id}) from: ${message.guild.name} (${message.guild.id})`)
   }
     
 })
@@ -129,7 +129,7 @@ client.on('guildCreate', message => {
     let webhook = new Discord.WebhookClient("761032176862101534", "yr507nnTV-UdsgJraFVHP_wSimGSEFP4t0yWq0uIebUHkN_hER5ULcSdUgxOf1rU7Al1")
     
     webhook.send(joinEmbed)
-    console.log(`[Shard #${shard}] I just joined ${guild.name} (${guild.id}). I am now in ${chicken} servers!`)
+    console.log(`[Shard #${shard}] I just joined: ${guild.name} (${guild.id}). I am now in ${chicken} servers!`)
 	  
 	let defaultChannel = "";
 guild.channels.cache.forEach((channel) => {
@@ -170,7 +170,7 @@ client.on('guildDelete', message => {
     let webhook = new Discord.WebhookClient("761032468807155732", "_XKK_R9TPcOifMgc1YieIV1Wkosr_zVsAf5K0Zz2Osojrt31MSOpzDQYT0ZLO_4ZyuwQ")
     
     webhook.send(leaveEmbed)
-    console.log(`[Shard #${shard}] I just left ${guild.name} (${guild.id}). I am now in ${chicken} servers!`)
+    console.log(`[Shard #${shard}] I just left: ${guild.name} (${guild.id}). I am now in ${chicken} servers!`)
   }).catch(console.error)
 })
  
