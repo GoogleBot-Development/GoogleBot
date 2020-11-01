@@ -13,3 +13,12 @@ if(message.author.id !== "667354950321569792") return
   message.channel.send(`I have just left: ${server.name} ({server.id}) with reason: ${reason}`)
   console.log(`[Shard #${fish}] I was forced to leave: ${server.name} ({server.id}) with reason: ${reason}`)
 }
+
+exports.help = {
+  name: "serverleave",
+  description: "Makes me leave a server!",
+  usage: "serverleave [serverid] [reason]",
+  category: "Administrator"
+}
+
+exports.aliases = ["sl"]
