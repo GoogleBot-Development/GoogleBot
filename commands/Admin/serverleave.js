@@ -4,11 +4,11 @@ const client = new Discord.Client()
 exports.run = async (client, message, args) => {
 if(message.author.id !== "667354950321569792") return
   let fish = message.guild.shard.id + 1
-  let server = client.shard.broadcastEval(client.guilds.cache.get(args[0]))
+  let server = client.shard.broadcastEval("client.guilds.cache.get(args[0])")
   let reason = args.slice(1).join(" ")
   if(!args[0]) return message.channel.send("You must give a server ID to make me leave!")
   if(!reason) return message.channel.send("You must give me a reason to make me leave the server!")
-  client.shard.broadcastEval(client.guilds.cache.get(server.id).leave())
+  client.shard.broadcastEval("client.guilds.cache.get(server.id).leave()")
   message.channel.send(`I have just left: ${server.name} (${server.id}) with reason: ${reason}`)
   console.log(`[Shard #${fish}] I was forced to leave: ${server.name} ({server.id}) with reason: ${reason}`)
 }
