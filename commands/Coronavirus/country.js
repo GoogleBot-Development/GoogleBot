@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
     if (countryInput.toLowerCase() == 'netherlands') countryInput = 'nl';
     if (countryInput.toLowerCase() == 'laos') countryInput = 'Lao People\'s Democratic Republic';
     const country = await covid.getCountry({ country: countryInput });
-    if (!country) return message.channel.send('I couldn\'t find that country. That country either doesn\'t exist, was typed incorrectly or has no confirmed cases.');
+    if (!country) return message.channel.send('I couldn\'t find that country. That country either doesn\'t exist, was typed incorrectly or has no confirmed cases. Make sure you capitalize your country name! For example, `g!country USA`, or `g!country United Kingdom`.');
 
     let wikiName;
     const wikiAliases = {
