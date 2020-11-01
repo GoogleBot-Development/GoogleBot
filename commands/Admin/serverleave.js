@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const client = new Discord.Client()
 
 exports.run = async (client, message, args) => {
 if(message.author.id !== "667354950321569792") return
