@@ -70,7 +70,7 @@ exports.run = async (client, message, args) => {
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
 
   message.channel.send(embed5)
-  userSchema.updateOne({id: user.id}, {'money.wallet': res.money.wallet - Number(args[0]), 'money.wallet': res.money.bank + Number(args[0])}, function(err, res) {if (err) console.log(err )})
+  userSchema.updateOne({id: user.id}, {'money.wallet': res.money.wallet - Number(args[0]), 'money.bank': res.money.bank + Number(args[0])}, function(err, res) {if (err) console.log(err )})
   }
 });
 }
