@@ -119,6 +119,7 @@ return message.channel.send(moneymore)
         message.channel.send(moneyEmbed4)
     }
 });
+ })
 }
 
 exports.help = {
