@@ -13,7 +13,21 @@ exports.run = async (client, message, args) => {
   function isOdd(num) { 
 	if ((num % 2) == 0) return false;
 	else if ((num % 2) == 1) return true;
-}
+	  
+ let timeout = 20000;
+
+  let roulette = res.times.roulette
+
+  if (roulette !== null && timeout - (Date.now() - roulette) > 0) {
+    let time = ms(timeout - (Date.now() - roulette));
+  
+    let timeEmbed = new Discord.MessageEmbed()
+    .setColor("RED")
+    .setDescription(`:x: You've already went to Roulette Table recently\n\nGo back again in **${time.seconds}s**.`)
+    .setTimestamp()
+    .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
+    message.channel.send(timeEmbed)
+  } else {
     
 let colour = args[0];
 let money = parseInt(args[1]);
@@ -64,7 +78,7 @@ return message.channel.send(moneymore)
     
     if (random == 0 && colour == 2) { // Green
         money *= 15
-        userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + money}, function(err, res) {if (err) console.log(err )})
+        userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + money, 'times.roulette': Date.now()}, function(err, res) {if (err) console.log(err )})
 
         let moneyEmbed1 = new Discord.MessageEmbed()
         .setColor("GREEN")
@@ -75,7 +89,7 @@ return message.channel.send(moneymore)
         console.log(`${message.author.tag} Won ${money} on green`)
     } else if (isOdd(random) && colour == 1) { // Red
         money = parseInt(money * 1.5)
-        userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + money}, function(err, res) {if (err) console.log(err )})
+        userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + money, 'times.roulette': Date.now()}, function(err, res) {if (err) console.log(err )})
 
         let moneyEmbed2 = new Discord.MessageEmbed()
         .setColor("GREEN")
@@ -85,7 +99,7 @@ return message.channel.send(moneymore)
         message.channel.send(moneyEmbed2)
     } else if (!isOdd(random) && colour == 0) { // Black
         money = parseInt(money * 2)
-        userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + money}, function(err, res) {if (err) console.log(err )})
+        userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet + money, 'times.roulette': Date.now()}, function(err, res) {if (err) console.log(err )})
 
         let moneyEmbed3 = new Discord.MessageEmbed()
         .setColor("GREEN")
@@ -94,7 +108,7 @@ return message.channel.send(moneymore)
         .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
         message.channel.send(moneyEmbed3)
     } else { // Wrong
-      userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet - money}, function(err, res) {if (err) console.log(err )})
+      userSchema.updateOne({id: message.author.id}, {'money.wallet': res.money.wallet - money, 'times.roulette': Date.now()}, function(err, res) {if (err) console.log(err )})
 
         let moneyEmbed4 = new Discord.MessageEmbed()
         .setColor("RED")
