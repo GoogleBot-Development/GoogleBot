@@ -28,7 +28,7 @@ exports.run = async (client, message, args) => {
     .setTimestamp()
     .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
     message.channel.send(timeEmbed)
-  }
+  } else {
     
 let colour = args[0];
 let money = parseInt(args[1]);
@@ -119,6 +119,7 @@ return message.channel.send(moneymore)
         message.channel.send(moneyEmbed4)
     }
 })
+  })
 }
 
 exports.help = {
