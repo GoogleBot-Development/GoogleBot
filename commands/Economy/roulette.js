@@ -13,6 +13,7 @@ exports.run = async (client, message, args) => {
   function isOdd(num) { 
 	if ((num % 2) == 0) return false;
 	else if ((num % 2) == 1) return true;
+  }
 	  
  let timeout = 20000;
 
