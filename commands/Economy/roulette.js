@@ -118,8 +118,7 @@ return message.channel.send(moneymore)
         .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
         message.channel.send(moneyEmbed4)
     }
-})
-  })
+}})
 }
 
 exports.help = {
