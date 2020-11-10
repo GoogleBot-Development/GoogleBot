@@ -14,10 +14,10 @@ exports.run = async (client, message, args) => {
     if (res.score == 3) scorefr = 'Strong';
     if (res.score == 4) scorefr = 'Very Strong';
     
-    let online = res.crack_times_display.online_throttling_100_per_hour.toPropperCase() || 'Not Available'
-    let meow = res.crack_times_display.online_no_throttling_10_per_second.toPropperCase() || 'Not Available'
-    let offline = res.crack_times_display.offline_slow_hashing_1e4_per_second.toPropperCase() || 'Not Available'
-    let woof = res.crack_times_display.offline_fast_hashing_1e10_per_second.toPropperCase() || 'Not Available'
+    let online = res.crack_times_display.online_throttling_100_per_hour.toUpperCase() || 'Not Available'
+    let meow = res.crack_times_display.online_no_throttling_10_per_second.toUpperCase() || 'Not Available'
+    let offline = res.crack_times_display.offline_slow_hashing_1e4_per_second.toUpperCase() || 'Not Available'
+    let woof = res.crack_times_display.offline_fast_hashing_1e10_per_second.toUpperCase() || 'Not Available'
     
     let embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
