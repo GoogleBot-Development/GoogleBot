@@ -19,9 +19,9 @@ exports.run = async (client, message, args) => {
   }
 
   exports.help = {
-  name: "loop",
-  description: "Loops the current song!",
-  usage: "loop",
+  name: "repeat",
+  description: "Repeats the rueect queue or the current song.",
+  usage: "repeat [song/queue/off]",
   category: "Music"
 }
 
