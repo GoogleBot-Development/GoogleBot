@@ -10,5 +10,13 @@
     "ownerUsername": "Jeydin21",
     "bannedIDs": ["743234300719267871", "443166863996878878", "486689069087064064", "729300910869708820", "718572921399803985"],
     "bannedServerIDs": ["755304042489446501"],
-    "dblToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyMTIxNTk0OTA4ODM1ODQyMCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTk2ODQxMzQ2fQ.exZB_prnPxlIjERL1ye4QG7k7SypUvrKf3pxMZAWuWk"
+    "dblToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyMTIxNTk0OTA4ODM1ODQyMCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTk2ODQxMzQ2fQ.exZB_prnPxlIjERL1ye4QG7k7SypUvrKf3pxMZAWuWk",
+    "emoji": {
+        "play": "▶️",
+        "stop": "⏹️",
+        "queue": "📄",
+        "success": "☑️",
+        "repeat": "🔁",
+        "error": "❌"
+    }
  }
