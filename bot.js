@@ -199,7 +199,7 @@ client.distube
     })
     // DisTubeOptions.searchSongs = true
     .on("searchCancel", (message) => message.channel.send(`${client.emotes.error} | Searching canceled`))
-    .on("error", (message, err) => message.channel.send(`${client.emotes.error} | An error encountered: ${err}`));
+    .on("error", (message, err) => message.channel.send(`${client.emotes.error} | An error encountered: ${err}`))
  
 
 client.login(config.token)
