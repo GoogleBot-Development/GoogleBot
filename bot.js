@@ -8,7 +8,7 @@ const client = new Discord.Client();
 
 const snekfetch = require('snekfetch');
 const DBL = require("dblapi.js");
-const dbl = new DBL(`${dblToken}`, client);
+const dbl = new DBL(`${config.dblToken}`, client);
 const shard = client.shard.ids[0] + 1
 
 client.distube = new DisTube(client, { searchSongs: true, emitNewSongOnly: true, leaveOnFinish: true })
