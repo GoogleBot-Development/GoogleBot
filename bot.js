@@ -1,8 +1,6 @@
 var userban = require('./userbans.json')
 var serverban = require("./serverbans.json")
 const Discord = require("discord.js");
-const DisTube = require("distube")
-const ffmpeg = require('ffmpeg-static')
 const config = require("./config.json")
 const client = new Discord.Client();
 
@@ -11,7 +9,6 @@ const DBL = require("dblapi.js");
 const dbl = new DBL(`${config.dblToken}`, client);
 const shard = client.shard.ids[0] + 1
 
-client.distube = new DisTube(client, { searchSongs: true, emitNewSongOnly: true, leaveOnFinish: true })
 client.emotes = config.emoji;
 client.commands = new Discord.Collection()
 client.aliases = new Discord.Collection()
@@ -177,29 +174,5 @@ client.on('guildDelete', message => {
     console.log(`[Shard #${shard}] I just left: ${guild.name} (${guild.id}). I am now in ${chicken} servers!`)
   }).catch(console.error)
 })
-
-const status = (queue) => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode == 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
-client.distube
-    .on("playSong", (message, queue, song) => message.channel.send(
-        `${client.emotes.play} | Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: **${song.user.tag}**\n${status(queue)}`
-    ))
-    .on("addSong", (message, queue, song) => message.channel.send(
-        `${client.emotes.success} | Added ${song.name} - \`${song.formattedDuration}\` to the queue by **${song.user.tag}**`
-    ))
-    .on("${client.emotes.play} |playList", (message, queue, playlist, song) => message.channel.send(
-        `${client.emotes.play} | Play \`${playlist.title}\` playlist (${playlist.total_items} songs).\nRequested by: **${song.user.tag}**\nNow playing \`${song.name}\` - \`${song.formattedDuration}\`\n${status(queue)}`
-    ))
-    .on("addList", (message, queue, playlist) => message.channel.send(
-        `${client.emotes.success} | Added \`${playlist.title}\` playlist (${playlist.total_items} songs) to queue\n${status(queue)}`
-    ))
-    // DisTubeOptions.searchSongs = true
-    .on("searchResult", (message, result) => {
-        let i = 0;
-        message.channel.send(`**Choose an option from below**\n\`\`\`${result.map(song => `${++i}. ${song.name} - ${song.formattedDuration}`).join("\n")}\`\`\`\n*Enter anything else or wait 60 seconds to cancel*`);
-    })
-    // DisTubeOptions.searchSongs = true
-    .on("searchCancel", (message) => message.channel.send(`${client.emotes.error} | Searching canceled`))
-    .on("error", (message, err) => message.channel.send(`${client.emotes.error} | An error encountered: ${err}`))
- 
 
 client.login(config.token)
