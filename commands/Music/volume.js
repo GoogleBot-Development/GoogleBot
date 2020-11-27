@@ -1,16 +1,19 @@
+const Discord = require('discord.js')
+const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
+
 exports.run = async (client, message, args) => {
-    if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} | You must be in a voice channel!`)
-    if (!client.distube.isPlaying(message)) return message.channel.send(`${client.emotes.error} | There is nothing playing!`)
-    let volume = parseInt(args[0]);
-    if(volume < 0 || volume > 1000) return message.channel.send(`${client.emotes.error} | You cannot set the volume to that! You can only change the volume from 0-1000.`)
-    if (isNaN(volume)) return message.channel.send(`${client.emotes.error} | Please enter a valid number!`)
-    client.distube.setVolume(message, volume);
-    message.channel.send(`${client.emotes.success} | Volume set to \`${volume}\``)
-  }
+  let referEmbed = new Discord.MessageEmbed()
+  .setColor("RED")
+  .setAuthor("Music Has Been Moved to GoogleMusic", message.author.displayAvatarURL({dynamic: true}), "https://top.gg/bot/778028895600377876")
+  .setDescription("Hello! We are sad to inform you that the music commands have been moved to our new project, GoogleMusic, which is capable of search YouTube to play music into your server! We have commands that are usually premium-restricted on other bots that are free for everyone to use! You can view GoogleMusic's top.gg's page by clicking on the link above.")
+  .setTimestamp()
+  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+  message.channel.send(referEmbed)
+}
 
 exports.help = {
   name: "volume",
-  description: "Allows you to toggle the volume of the music that is playing!",
+  description: "Music has been moved",
   usage: "volume",
   category: "Music"
 }
