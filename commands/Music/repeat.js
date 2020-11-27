@@ -1,26 +1,19 @@
+const Discord = require('discord.js')
+const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year, bannedIDs, bannedServerIDs, dblToken } = require("../../config.json");
+
 exports.run = async (client, message, args) => {
-    if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} | You must be in a voice channel!`)
-    if (!client.distube.isPlaying(message)) return message.channel.send(`${client.emotes.error} | You must be in a voice channel!`)
-    let mode = null;
-    switch (args[0]) {
-      case "off":
-        mode = 0
-        break
-      case "song":
-        mode = 1
-        break
-      case "queue":
-        mode = 2
-        break
-    }
-    mode = client.distube.setRepeatMode(message, mode);
-    mode = mode ? mode == 2 ? "Repeat queue" : "Repeat song" : "Off";
-    message.channel.send(`${client.emotes.repeat} | Set repeat mode to \`${mode}\``);
-  }
+  let referEmbed = new Discord.MessageEmbed()
+  .setColor("RED")
+  .setAuthor("Music Has Been Moved to GoogleMusic", message.author.displayAvatarURL({dynamic: true}), "https://top.gg/bot/778028895600377876")
+  .setDescription("Hello! We are sad to inform you that the music commands have been moved to our new project, GoogleMusic, which is capable of search YouTube to play music into your server! We have commands that are usually premium-restricted on other bots that are free for everyone to use! You can view GoogleMusic's top.gg's page by clicking on the link above.")
+  .setTimestamp()
+  .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL( { format: "png" } ))
+  message.channel.send(referEmbed)
+}
 
   exports.help = {
   name: "repeat",
-  description: "Repeats the rueect queue or the current song.",
+  description: "Music has been moved",
   usage: "repeat [song/queue/off]",
   category: "Music"
 }
