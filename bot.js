@@ -46,6 +46,10 @@ client.on("shardReconnecting", async shard => {
     client.statusHook.send(`[Shard **${shard + 1}**] Reconnection in progress on the servers containing this shard...`)
 })
 
+//Shard error
+client.on("shardError", async shard => {
+    client.statusHook.send(`[Shard **${shard + 1}**] There was a connection error...`)
+
 //Shard resume
 client.on("shardResume", async shard => {
     client.statusHook.send(`[Shard **${shard + 1}**] Successfully reconnected to **${client.guilds.cache.size}** servers!`)
