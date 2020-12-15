@@ -3,7 +3,7 @@ const randomPuppy = require("random-puppy");
 
 exports.run = async (client, message, args) => {
 
-    const subReddits = ["dankmeme", "meme", "me_irl", "memes", "wholesomememes", "historymemes", "comedyheaven", "AdviceAnimals"];
+    const subReddits = ["dankmeme", "meme", "me_irl", "memes", "historymemes", "Offensivejokes", "Memes_Of_The_Dank"];
         
     const random = subReddits[Math.floor(Math.random() * subReddits.length)]
 
