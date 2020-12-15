@@ -49,6 +49,7 @@ client.on("shardReconnecting", async shard => {
 //Shard error
 client.on("shardError", async shard => {
     client.statusHook.send(`[Shard **${shard + 1}**] There was a connection error...`)
+})
 
 //Shard resume
 client.on("shardResume", async shard => {
