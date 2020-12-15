@@ -48,7 +48,7 @@ client.on("shardReconnecting", async shard => {
 
 //Shard resume
 client.on("shardResume", async shard => {
-    client.statusHook.send(`[Shard **${shard + 1}**] Successfully reconnected to **${client.guilds.cache.size}** servers and **${client.users.cache.size}** users!`)
+    client.statusHook.send(`[Shard **${shard + 1}**] Successfully reconnected to **${client.guilds.cache.size}** servers!`)
 })
 
 
