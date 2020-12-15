@@ -27,6 +27,31 @@ setInterval(() => {
   }).catch(console.error)
 })
 
+
+//New Webhook
+client.statusHook = new Discord.WebhookClient("788494283908186133", "r5YdkJXcxtYsx1VkeW27-C1rXpPXowt_rQT-W0PCxnFt4HxiELJXpUKxC2HQ-Z_pqyLM")
+
+//Shard ready
+client.on("shardReady", async shard => {
+    client.statusHook.send(`[Shard **${shard + 1}**] Ready on **${client.guilds.cache.size}** servers and **${client.users.cache.size}** users!`)
+})
+
+//Shard disconnect
+client.on("shardDisconnect", async shard => {
+    client.statusHook.send(`[Shard **${shard + 1}**] Disconnected from its servers and users temporarily...`)
+})
+
+//Shard reconnecting
+client.on("shardReconnecting", async shard => {
+    client.statusHook.send(`[Shard **${shard + 1}**] Reconnection in progress on the servers containing this shard...`)
+})
+
+//Shard resume
+client.on("shardResume", async shard => {
+    client.statusHook.send(`[Shard **${shard + 1}**] Successfully reconnected to **${client.guilds.cache.size}** servers and **${client.users.cache.size}** users!`)
+})
+
+
 require("fs").readdir("./events/", (err, files) => {
   if (err) return console.error(err);
 
