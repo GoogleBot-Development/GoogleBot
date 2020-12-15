@@ -33,7 +33,7 @@ client.statusHook = new Discord.WebhookClient("788494283908186133", "r5YdkJXcxtY
 
 //Shard ready
 client.on("shardReady", async shard => {
-    client.statusHook.send(`[Shard **${shard + 1}**] Ready on **${client.guilds.cache.size}** servers and **${client.users.cache.size}** users!`)
+    client.statusHook.send(`[Shard **${shard + 1}**] Ready on **${client.guilds.cache.size}** servers!`)
 })
 
 //Shard disconnect
