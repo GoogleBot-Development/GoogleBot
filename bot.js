@@ -34,26 +34,31 @@ client.statusHook = new Discord.WebhookClient("788494283908186133", "r5YdkJXcxtY
 //Shard ready
 client.on("shardReady", async shard => {
     client.statusHook.send(`[Shard **${shard + 1}**] Ready on **${client.guilds.cache.size}** servers!`)
+    console.log(`[Shard ${shard + 1}] Ready on **${client.guilds.cache.size}** servers!`)
 })
 
 //Shard disconnect
 client.on("shardDisconnect", async shard => {
     client.statusHook.send(`[Shard **${shard + 1}**] Disconnected from its servers and users temporarily...`)
+    console.log(`[Shard ${shard + 1}] Disconnected from its servers and users temporarily...`)
 })
 
 //Shard reconnecting
 client.on("shardReconnecting", async shard => {
     client.statusHook.send(`[Shard **${shard + 1}**] Reconnection in progress on the servers containing this shard...`)
+    console.log(`[Shard ${shard + 1}] Reconnection in progress on the servers containing this shard...`)
 })
 
 //Shard error
 client.on("shardError", async shard => {
     client.statusHook.send(`[Shard **${shard + 1}**] There was a connection error...`)
+    console.log(`[Shard ${shard + 1}] There was a connection error...`)
 })
 
 //Shard resume
 client.on("shardResume", async shard => {
     client.statusHook.send(`[Shard **${shard + 1}**] Successfully reconnected to **${client.guilds.cache.size}** servers!`)
+    console.log(`[Shard ${shard + 1}] Successfully reconnected to **${client.guilds.cache.size}** servers!`)
 })
 
 
