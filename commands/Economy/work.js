@@ -27,7 +27,7 @@ exports.run = async (client, message, args) => {
         let replies = ['Programmer','Builder','Cashier','Singer','Chief','Mechanic', "Janitor", "YouTuber", "Teacher", "Doctor", "Bus Driver"]
 
         let result = Math.floor((Math.random() * replies.length));
-        let amount = Math.floor(Math.random() * 80) + 1;
+        let amount = Math.floor(Math.random() * 200) + 1;
         let embed1 = new Discord.MessageEmbed()
         .setColor("GREEN")
         .setDescription(`<a:checkmark:736406591275794583> You worked as a **${replies[result]}** and earned **${amount}** GoogleCoins!`)
