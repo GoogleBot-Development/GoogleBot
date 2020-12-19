@@ -4,7 +4,7 @@ const { prefix, token, version, name, ownerID, ownerUsername, mainVersion, year,
 
 exports.run = (client, message, args) => {
  args = args.join(" ")
-   let fun = [], actions = [], search = [], important = [], utility = [], links = [], economy = [], animals = [], covid = [], music = []
+   let fun = [], actions = [], search = [], important = [], utility = [], links = [], economy = [], animals = [], covid = []
 
   if (!args) {
    
@@ -23,7 +23,6 @@ recursive("./commands/", function (err, files) {
     if (f.startsWith("commands/Economy")) economy.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Animals")) animals.push(`\`${props.help.name}\``)
     if (f.startsWith("commands/Coronavirus")) covid.push(`\`${props.help.name}\``)
-   if (f.startsWith("commands/Music")) music.push(`\`${props.help.name}\``)
 })
 
   const embed = new Discord.MessageEmbed()
@@ -37,7 +36,6 @@ recursive("./commands/", function (err, files) {
   .addField(`:moneybag:  Economy Commands - (${economy.length})  :moneybag:`, economy.join(", "))
   .addField(`:8ball:  Fun Commands - (${fun.length})  :8ball:`, fun.join(", "))
   .addField(`:link:  Link Shorteners - (${links.length})  :link:`, links.join(", "))
-  .addField(`:musical_note:  Music Commands - (${music.length})  :musical_note:`, music.join(", "))
   .addField(`:mag:  Search Commands - (${search.length})  :mag:`, search.join(", "))
   .addField(`:tools:  Utility Commands - (${utility.length})  :tools:`, utility.join(", "))
   .setTimestamp()
