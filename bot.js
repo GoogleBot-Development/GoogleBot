@@ -112,7 +112,7 @@ client.on('message', message =>{
     
   let guild = message.guild
   guildSchema.findOne({id: guild.id}, (err, res) => {
-  let prefix = res.prefix
+  if(!res) res = ("./models/guild.js")(guild)
   if(!res) prefix = "g!"
   if (userban[message.author.id]) return  
   if (serverban[message.guild.id]) return
