@@ -16,8 +16,7 @@ exports.run = async (client, message, args) => {
   .setFooter(`© ${name} ${year} | ${version}`, message.client.user.displayAvatarURL({dynamic: true}))
   message.channel.send(moneyEmbed)
   guildSchema.updateOne({id: guild.id}, {'prefix': prefix}, function(err, res) {if (err) console.log(err )})
-  }
-});
+})
 }
 
 exports.help = {
