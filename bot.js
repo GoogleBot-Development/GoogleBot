@@ -3,7 +3,7 @@ var serverban = require("./serverbans.json")
 const Discord = require("discord.js");
 const config = require("./config.json")
 const client = new Discord.Client();
-const guildSchema = require('../../models/guild.js');
+const guildSchema = require('./models/guild.js');
 
 const snekfetch = require('snekfetch');
 const DBL = require("dblapi.js");
