@@ -3,7 +3,6 @@ var serverban = require("./serverbans.json")
 const Discord = require("discord.js");
 const config = require("./config.json")
 const client = new Discord.Client();
-const guildSchema = require('./models/guild.js');
 
 const snekfetch = require('snekfetch');
 const DBL = require("dblapi.js");
@@ -110,10 +109,7 @@ client.on('message', message =>{
 
   if (message.channel.type === "dm") return
     
-  let guild = message.guild
-  guildSchema.findOne({id: guild.id}, (err, res) => {
-  if(!res) res = ("./models/guild.js")(guild)
-  if(!res) prefix = "g!"
+  let prefix = "g!"
   if (userban[message.author.id]) return  
   if (serverban[message.guild.id]) return
     
