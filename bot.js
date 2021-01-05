@@ -134,8 +134,6 @@ client.on('message', message =>{
   function ranCommand(c) {
     console.log(`[Shard #${shard}] g!${c.help.name} ran by: ${message.author.tag} (${message.author.id}) from: ${message.guild.name} (${message.guild.id})`)
   }
-  
-  })
 })
 
 client.on('message', message => {
