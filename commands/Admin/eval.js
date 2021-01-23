@@ -43,7 +43,7 @@ exports.run = async (client, message, a) => {
          .addField("Click on the link below to view the eval result", `${src.url}`)
          message.channel.send({ embed: embed })
           }).catch(e => {
-            message.channel.send(`Error, try again later`)
+            message.channel.send(`Error: ${e}`)
       });
 } else {
         var embed2 = new Discord.MessageEmbed()
@@ -68,7 +68,7 @@ exports.run = async (client, message, a) => {
                  .addField("Click on the link below to view the eval result", `${src.url}`)
                  message.channel.send({ embed: embed })
                   }).catch(e => {
-                    message.channel.send(`Error, try again later`)
+                    message.channel.send(`Error: ${e}`)
               });
 };
       var embed3 = new Discord.MessageEmbed()
